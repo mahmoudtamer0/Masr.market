@@ -1,0 +1,14 @@
+li a.active {
+    color: #ed8a8a !important;
+}
+
+.nav-link {
+    color: black !important;
+    font-weight: bold !important;
+}
+
+.navbar-brand {
+    color: #ed8a8a !important;
+    font-size: 26px !important;
+    font-weight: bold !important;
+}
