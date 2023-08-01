@@ -10,7 +10,7 @@ function Landing() {
         <div id="carouselExampleSlidesOnly" className="carousel slide landing" data-bs-ride="carousel">
             <div className='overlay'>
                 <h1>Welcome ,</h1>
-                <h1> To Btngan Market App</h1>
+                <h1> To Masr Market App</h1>
             </div>
             <div className="carousel-inner">
                 <div className="carousel-item active">

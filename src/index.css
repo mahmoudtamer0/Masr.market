@@ -5,10 +5,47 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 5000px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  padding: 34px;
+
+  width: 100%;
+}
+
+.footer h5 {
+  margin: 0;
+  color: #b7b7b7;
+  font-size: 14px;
+}
+
+.footspec {
+  color: #ed8a8a !important;
+}
+
+.addd {
+  min-height: 81vh;
+}
+
+.cat-bts {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  font-weight: bold !important;
+}
+
+@media (max-width:555px) {
+  .cat-btn {
+    font-size: 8px !important;
+  }
 }

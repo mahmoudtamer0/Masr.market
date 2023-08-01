@@ -1,24 +1,20 @@
-/* .card-product img {
-    max-width: 70%;
+.imag-div img {
     height: 300px;
+    width: 290px !important;
+    margin: auto !important;
 }
 
-.products-box {
-    padding-top: 30px;
+
+h5 {
+    text-align: center;
+    font-size: 30px;
 }
 
-.card-product {
-    max-height: 450px;
-    min-height: 450px;
-    margin-top: 50px;
-    border: none !important;
-    border-radius: 10px !important;
+p {
+    font-size: 20px;
 }
 
-.card-product p {
-    font-size: 23px;
+.imag-div {
+    text-align: center;
+    margin: 35px;
 }
-
-.card-product h5 {
-    font-size: 35px;
-} */

@@ -1,18 +1,24 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import Productdet from "./Productdet";
-
+import { Link } from "react-router-dom";
+import './proddet.css'
 function ProductDetails() {
-    const params = useParams();
-    const api_url = 'https://fakestoreapi.com/products';
-
-    const [product, setProducts] = useState([]);
+    const { productId } = useParams();
+    const api_url = 'https://btngan-data.onrender.com/products';
+    const [product, setProduct] = useState([]);
     useEffect(() => {
-        fetch(`${api_url}/${params.productId}`)
-            .then(res => res.json()).then(data => setProducts(data))
+        fetch(`${api_url}/${productId}`)
+            .then(res => res.json()).then(data => setProduct(data))
     }, [])
     return (
-        <Productdet product={product} showButton={false} />
+        <div className="container">
+
+            <h5>{product.title}</h5>
+            <div className="imag-div">
+                <img src={product.image} />
+            </div>
+            <p> {product.description}</p>
+        </div>
     )
 }
 

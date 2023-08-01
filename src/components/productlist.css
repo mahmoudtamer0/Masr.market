@@ -16,16 +16,34 @@
     max-height: 450px;
     min-height: 450px;
     margin-top: 50px;
-    border: solid #ed8a8a !important;
+    /* border: solid #ed8a8a !important; */
     border-radius: 10px !important;
 }
 
-.card-product p {
+/* .card-product p {
     height: 103px;
     overflow-y: hidden;
     font-size: 10px;
+} */
+
+/* .card-product h5 {
+    font-size: 16px;
+} */
+
+.title-card {
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.1s;
 }
 
-.card-product h5 {
-    font-size: 16px;
+.title-card:hover {
+    color: #ed8a8a;
+}
+
+.card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
 }
