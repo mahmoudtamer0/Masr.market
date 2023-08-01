@@ -1,7 +1,7 @@
-import landing1 from '../images/images (1).jpeg'
-import landing2 from '../images/images (2).jpeg'
-import landing3 from '../images/landing4.jpg'
-import landing from '../images/images.jpeg'
+import landing1 from '../images/new-1.jpg'
+import landing2 from '../images/new-2.jpg'
+import landing3 from '../images/new-3.jpg'
+import landing from '../images/landing4.jpg'
 import './landing.css'
 
 function Landing() {
