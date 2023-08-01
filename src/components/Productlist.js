@@ -31,14 +31,27 @@ function ProductList() {
         <div className='product-list'>
             <h2 className="text-center">Our Products</h2>
             <div className="container">
-                <div className='cat-bts'>
+                <div class="btn-group dropend">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><button className='dropdown-item' onClick={() => getProducts()}>All</button></li>
+                        {categories.map(cat => {
+                            return (
+                                <li><button className='dropdown-item' onClick={() => getincategories(cat)}>{cat}</button></li>
+                            )
+                        })}
+                    </ul>
+                </div>
+                {/* <div className='cat-bts'>
                     <button className='btn btn-info cat-btn' onClick={() => getProducts()}>All</button>
                     {categories.map(cat => {
                         return (
                             <button className='btn btn-info cat-btn' onClick={() => getincategories(cat)}>{cat}</button>
                         )
                     })}
-                </div>
+                </div> */}
 
                 <div className="row justify-content-center align-items-center products-box">
                     {Products.map((product) => {

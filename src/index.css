@@ -49,3 +49,7 @@ code {
     font-size: 8px !important;
   }
 }
+
+.product-list h2 {
+  margin-bottom: 45px;
+}
