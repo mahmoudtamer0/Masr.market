@@ -29,7 +29,7 @@ function ProductList() {
 
     return (
         <div className='product-list'>
-            <h2 className="text-center">Our Products.</h2>
+            <h2 className="text-center">Our Products</h2>
             <div className="container">
                 <div className='cat-bts'>
                     <button className='btn btn-info cat-btn' onClick={() => getProducts()}>All</button>
