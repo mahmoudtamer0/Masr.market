@@ -16,6 +16,9 @@ function Navbar() {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/about">About</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" target="_blank" href="https://masr-market-management.surge.sh/">Edit_on_Products</a>
+                        </li>
                     </ul>
 
                 </div>
