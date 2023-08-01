@@ -15,6 +15,8 @@ function ProductList() {
             .then((data) => setCategories(data))
     }
 
+    console.log(document.getElementById('bttt'))
+
     const getincategories = (catname) => {
         fetch(`https://btngan-data.onrender.com/${catname}`)
             .then((res) => res.json())
@@ -32,7 +34,7 @@ function ProductList() {
             <h2 className="text-center">Our Products</h2>
             <div className="container">
                 <div class="btn-group dropend">
-                    <button type="button" class="down-btn btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button id='bttt' type="button" class="down-btn btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Categories
                     </button>
                     <ul class="dropdown-menu">
