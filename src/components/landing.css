@@ -18,3 +18,7 @@ img {
     align-items: center;
     flex-direction: column;
 }
+
+button.none {
+    display: none;
+}
