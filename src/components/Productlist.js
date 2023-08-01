@@ -32,7 +32,7 @@ function ProductList() {
             <h2 className="text-center">Our Products</h2>
             <div className="container">
                 <div class="btn-group dropend">
-                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="down-btn btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Categories
                     </button>
                     <ul class="dropdown-menu">
@@ -44,14 +44,6 @@ function ProductList() {
                         })}
                     </ul>
                 </div>
-                {/* <div className='cat-bts'>
-                    <button className='btn btn-info cat-btn' onClick={() => getProducts()}>All</button>
-                    {categories.map(cat => {
-                        return (
-                            <button className='btn btn-info cat-btn' onClick={() => getincategories(cat)}>{cat}</button>
-                        )
-                    })}
-                </div> */}
 
                 <div className="row justify-content-center align-items-center products-box">
                     {Products.map((product) => {
@@ -63,7 +55,7 @@ function ProductList() {
                                         <Link className="card-title title-card" to={`/products/${product.id}`}>{product.title.slice(0, 50)} ...</Link>
                                         <p className="card-text">{product.description.slice(0, 60)} ...</p>
                                         <h6>price : {product.price}$</h6>
-                                        <Link className="btn btn-primary" to={`/products/${product.id}`}>Details</Link>
+                                        <Link className="btn btn-prod" to={`/products/${product.id}`}>Details</Link>
                                     </div>
                                 </div >
                             </div>

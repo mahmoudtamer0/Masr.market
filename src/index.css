@@ -53,3 +53,28 @@ code {
 .product-list h2 {
   margin-bottom: 45px;
 }
+
+.down-btn {
+  background-color: #ed8a8a !important;
+  border: none !important;
+}
+
+.down-btn:hover {
+  background-color: #db7f7f !important;
+}
+
+.dropend li button:hover {
+  background-color: #ed8a8a;
+  transition: 0.2s;
+  color: white;
+}
+
+.btn-prod {
+  background-color: #ed8a8a !important;
+  transition: 0.2s !important;
+  color: white !important;
+}
+
+.btn-prod:hover {
+  background-color: #db7f7f !important;
+}
