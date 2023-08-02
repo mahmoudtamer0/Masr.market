@@ -13,7 +13,7 @@ function App() {
       <div className="main-page">
         <Router basename="/Masr.market">
           <Navbar />
-          {/* <PreLoader /> */}
+          <PreLoader />
           <Routes>
             <Route path="/" element={<><Landing /> <ProductList /></>} />
             <Route path="/products/:productId" element={<ProductDetails />} />
