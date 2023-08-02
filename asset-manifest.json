@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Masr.market/static/css/main.a3800c27.css",
-    "main.js": "/Masr.market/static/js/main.9f3132ce.js",
+    "main.js": "/Masr.market/static/js/main.dab2b149.js",
     "static/js/787.b8edf084.chunk.js": "/Masr.market/static/js/787.b8edf084.chunk.js",
     "static/media/new-1.jpg": "/Masr.market/static/media/new-1.82d47a065aab9d9ca219.jpg",
     "static/media/new-2.jpg": "/Masr.market/static/media/new-2.b2651ed2c7d97b76b0d1.jpg",
@@ -9,11 +9,11 @@
     "static/media/new-3.jpg": "/Masr.market/static/media/new-3.7102c39bff0c752ca8d6.jpg",
     "index.html": "/Masr.market/index.html",
     "main.a3800c27.css.map": "/Masr.market/static/css/main.a3800c27.css.map",
-    "main.9f3132ce.js.map": "/Masr.market/static/js/main.9f3132ce.js.map",
+    "main.dab2b149.js.map": "/Masr.market/static/js/main.dab2b149.js.map",
     "787.b8edf084.chunk.js.map": "/Masr.market/static/js/787.b8edf084.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a3800c27.css",
-    "static/js/main.9f3132ce.js"
+    "static/js/main.dab2b149.js"
   ]
 }
