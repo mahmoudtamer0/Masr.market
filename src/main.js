@@ -1,3 +1,4 @@
 window.addEventListener('load', (event) => {
-    document.querySelector('.preloader').classList.add('none')
+    // document.querySelector('.preloader').classList.add('none')
+    console.log('loaded')
 })
