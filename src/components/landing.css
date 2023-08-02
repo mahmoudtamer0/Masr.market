@@ -19,6 +19,12 @@ img {
     flex-direction: column;
 }
 
+@media (max-width:556px) {
+    .overlay {
+        height: 103% !important;
+    }
+}
+
 button.none {
     display: none;
 }
