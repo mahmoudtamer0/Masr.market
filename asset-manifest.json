@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/Masr.market/static/css/main.5fb1bdb5.css",
-    "main.js": "/Masr.market/static/js/main.837803cb.js",
-    "static/js/787.36b8abfb.chunk.js": "/Masr.market/static/js/787.36b8abfb.chunk.js",
-    "static/media/new-1.jpg": "/Masr.market/static/media/new-1.82d47a065aab9d9ca219.jpg",
-    "static/media/new-2.jpg": "/Masr.market/static/media/new-2.b2651ed2c7d97b76b0d1.jpg",
-    "static/media/landing4.jpg": "/Masr.market/static/media/landing4.34b843d278cfb435cc0a.jpg",
-    "static/media/new-3.jpg": "/Masr.market/static/media/new-3.7102c39bff0c752ca8d6.jpg",
-    "index.html": "/Masr.market/index.html",
-    "main.5fb1bdb5.css.map": "/Masr.market/static/css/main.5fb1bdb5.css.map",
-    "main.837803cb.js.map": "/Masr.market/static/js/main.837803cb.js.map",
-    "787.36b8abfb.chunk.js.map": "/Masr.market/static/js/787.36b8abfb.chunk.js.map"
+    "main.css": "/static/css/main.a3800c27.css",
+    "main.js": "/static/js/main.bfeacbd2.js",
+    "static/js/787.b8edf084.chunk.js": "/static/js/787.b8edf084.chunk.js",
+    "static/media/new-1.jpg": "/static/media/new-1.82d47a065aab9d9ca219.jpg",
+    "static/media/new-2.jpg": "/static/media/new-2.b2651ed2c7d97b76b0d1.jpg",
+    "static/media/landing4.jpg": "/static/media/landing4.34b843d278cfb435cc0a.jpg",
+    "static/media/new-3.jpg": "/static/media/new-3.7102c39bff0c752ca8d6.jpg",
+    "index.html": "/index.html",
+    "main.a3800c27.css.map": "/static/css/main.a3800c27.css.map",
+    "main.bfeacbd2.js.map": "/static/js/main.bfeacbd2.js.map",
+    "787.b8edf084.chunk.js.map": "/static/js/787.b8edf084.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5fb1bdb5.css",
-    "static/js/main.837803cb.js"
+    "static/css/main.a3800c27.css",
+    "static/js/main.bfeacbd2.js"
   ]
 }
