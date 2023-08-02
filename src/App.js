@@ -4,9 +4,9 @@ import ProductList from "./components/Productlist";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import ProductDetails from "./components/ProductDetails";
 import Footer from "./components/Footer";
-import PreLoader from "./components/Preloader";
 import { useEffect, useState, CSSProperties } from "react";
 import HashLoader from "react-spinners/HashLoader";
+import './components/preloader.css'
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -31,7 +31,6 @@ function App() {
           /></div> : <div >
           <Router basename="/Masr.market">
             <Navbar />
-            <PreLoader />
             <Routes>
               <Route path="/" element={<><Landing /> <ProductList /></>} />
               <Route path="/products/:productId" element={<ProductDetails />} />
