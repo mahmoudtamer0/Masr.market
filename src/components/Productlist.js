@@ -1,6 +1,8 @@
 import './productlist.css'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Backdrop } from '@mui/material';
+import makeStyles from '@mui/material';
 function ProductList() {
     const api_url = 'https://btngan-data.onrender.com/products';
 
@@ -25,7 +27,6 @@ function ProductList() {
         getProducts();
         getcategories();
     }, [])
-
 
     return (
         <div className='product-list'>
@@ -59,8 +60,11 @@ function ProductList() {
                                     </div>
                                 </div >
                             </div>
+
                         )
-                    })}
+                    }
+                    )
+                    }
                 </div>
             </div>
         </div>
