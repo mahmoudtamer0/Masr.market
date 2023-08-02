@@ -9,7 +9,7 @@ const PreLoader = () => {
         var onload = function () {
             document.querySelector('.preloader').classList.add('none')
         };
-        window.addEventListener('load', onload, false);
+        window.addEventListener('load', onload);
     })();
 
     // window.addEventListener('load', (event) => {
