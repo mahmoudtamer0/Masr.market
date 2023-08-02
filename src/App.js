@@ -11,7 +11,7 @@ function App() {
     <div className="App">
 
       <div className="main-page">
-        <Router>
+        <Router basename="/Masr.market">
           <Navbar />
           {/* <PreLoader /> */}
           <Routes>

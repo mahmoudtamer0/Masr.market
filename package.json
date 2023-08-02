@@ -1,6 +1,5 @@
 {
-  "homepage": "https://mahmoudtamer0.github.io/Masr.market/",
-  "name": "btngan-app",
+  "name": "masr-market",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
