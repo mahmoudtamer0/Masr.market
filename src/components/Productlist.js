@@ -1,12 +1,11 @@
 import './productlist.css'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Backdrop } from '@mui/material';
-import makeStyles from '@mui/material';
+import ClipLoader from "react-spinners/ClipLoader";
 function ProductList() {
     const api_url = 'https://btngan-data.onrender.com/products';
 
-    const [Products, setProducts] = useState([]);
+    const [Products, setProducts] = useState();
     const [categories, setCategories] = useState([]);
     const getProducts = () => {
         fetch(api_url).then((res) => res.json()).then((data) => { setProducts(data) })
@@ -28,6 +27,12 @@ function ProductList() {
         getcategories();
     }, [])
 
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        setLoading(true)
+    }, [])
+
     return (
         <div className='product-list'>
             <h2 className="text-center">Our Products</h2>
@@ -47,7 +52,7 @@ function ProductList() {
                 </div>
 
                 <div className="row justify-content-center align-items-center products-box">
-                    {Products?.map((product) => {
+                    {Products ? Products.map((product) => {
                         return (
                             <div className="col-lg-3 col-12 col-md-4 col-sm-6" key={product.id}>
                                 <div className="card card-product">
@@ -64,7 +69,13 @@ function ProductList() {
                         )
                     }
                     )
-                    }
+                        : <div className='prodpre text-center'><ClipLoader
+                            color='#ed8a8a'
+                            loading={loading}
+                            size={30}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        /></div>}
                 </div>
             </div>
         </div>
