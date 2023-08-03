@@ -17,7 +17,7 @@ function Navbar() {
                             <NavLink className="nav-link" to="/about">About</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" target="_blank" href="https://masr-market-management.surge.sh/">Edit_on_Products</a>
+                            <a className="nav-link" target="_blank" href="https://mahmoudtamer0.github.io/Masr.market_Management_System/">Edit_on_Products</a>
                         </li>
                     </ul>
 
