@@ -78,3 +78,7 @@ code {
 .btn-prod:hover {
   background-color: #db7f7f !important;
 }
+
+.maincart {
+  min-height: 79vh;
+}
