@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import { useEffect, useState, CSSProperties } from "react";
 import HashLoader from "react-spinners/HashLoader"
 import './components/preloader.css'
+import Cart from "./components/Cart";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -33,6 +34,7 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<><Landing /> <ProductList /></>} />
+              <Route path="/cart" element={<><Cart /></>} />
               <Route path="/products/:productId" element={<ProductDetails />} />
             </Routes>
             <Footer />
