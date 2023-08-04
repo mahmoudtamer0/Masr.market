@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import './navbar.css'
+import { faFontAwesome } from "@fortawesome/free-regular-svg-icons";
 function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -15,6 +16,9 @@ function Navbar() {
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/about">About</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link cart" to="/cart"><i class="fa-solid fa-cart-shopping"></i></NavLink>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" target="_blank" href="https://mahmoudtamer0.github.io/Masr.market_Management_System/">Edit_on_Products</a>
