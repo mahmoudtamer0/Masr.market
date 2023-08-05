@@ -82,3 +82,97 @@ code {
 .maincart {
   min-height: 79vh;
 }
+
+
+.maincart h3 {
+  font-size: 20px;
+}
+
+.cartproduct {
+  width: 50%;
+  display: flex;
+  margin: auto;
+  border: 1px solid #c9c4c4;
+  justify-content: start;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.cartimg {
+  height: 160px;
+  z-index: 1000;
+  width: 100%;
+}
+
+.cartimg img {
+  max-height: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+@media (max-width:772px) {
+  .cartproduct {
+    width: 80%;
+  }
+}
+
+@media (max-width:555px) {
+  /* .cartimg {
+    height: 120px;
+  } */
+
+  .cartproduct {
+    width: 100%;
+  }
+}
+
+.prods {
+  margin-top: 40px;
+}
+
+.basketdiv {
+  cursor: pointer;
+  margin-top: 5px;
+  margin-right: 10px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 9px; */
+}
+
+.basketdiv i {
+  color: red;
+  font-size: 21px;
+}
+
+@media (max-width:555px) {
+  /* .basketdiv {
+    width: 25px;
+    height: 25px;
+  } */
+
+  .basketdiv i {
+    font-size: 14px;
+  }
+
+  .cartproduct {
+    gap: 10px;
+  }
+}
+
+
+.disa {
+  color: #8f8080;
+}
+
+.counterdiv {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counterdiv i {
+  cursor: pointer;
+}
