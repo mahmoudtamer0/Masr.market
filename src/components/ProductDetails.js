@@ -20,7 +20,7 @@ function ProductDetails() {
         })
     }
     return (
-        <div className="container">
+        <div className="container maincart">
 
             <h5>{product.title}</h5>
             <div className="imag-div">
