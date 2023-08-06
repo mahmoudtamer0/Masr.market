@@ -80,7 +80,7 @@ code {
 }
 
 .maincart {
-  min-height: 79vh;
+  min-height: 79.5vh;
 }
 
 
@@ -89,7 +89,7 @@ code {
 }
 
 .cartproduct {
-  width: 50%;
+  width: 100%;
   display: flex;
   margin: auto;
   border: 1px solid #c9c4c4;
@@ -101,7 +101,7 @@ code {
 .cartimg {
   height: 160px;
   z-index: 1000;
-  width: 100%;
+  width: 25%;
 }
 
 .cartimg img {
@@ -175,4 +175,16 @@ code {
 
 .counterdiv i {
   cursor: pointer;
+}
+
+.noprod h4 {
+  margin-top: 150px;
+  color: #b7b7b7;
+  font-size: 22px;
+}
+
+.boxcontent {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
 }
