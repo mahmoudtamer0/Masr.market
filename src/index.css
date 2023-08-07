@@ -96,6 +96,8 @@ code {
   justify-content: start;
   gap: 40px;
   margin-bottom: 30px;
+
+  border-radius: 5px;
 }
 
 .cartimg {
@@ -108,22 +110,6 @@ code {
   max-height: 100%;
   max-width: 100%;
   min-width: 100%;
-}
-
-@media (max-width:772px) {
-  .cartproduct {
-    width: 80%;
-  }
-}
-
-@media (max-width:555px) {
-  /* .cartimg {
-    height: 120px;
-  } */
-
-  .cartproduct {
-    width: 100%;
-  }
 }
 
 .prods {
@@ -187,4 +173,77 @@ code {
   width: 75%;
   display: flex;
   justify-content: space-between;
+}
+
+.reset-div {
+  background-color: #ed8a8ac4;
+  border-radius: 16px;
+  padding: 10px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: fit-content;
+}
+
+.reset-div div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reset-div h2 {
+  position: relative;
+}
+
+.reset-div h2::before {
+  position: absolute;
+  content: '';
+  top: 113%;
+  height: 1px;
+  background-color: #00000080;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  right: 50%;
+}
+
+.total-div {
+  position: relative;
+}
+
+.total-div::before {
+  position: absolute;
+  content: '';
+  bottom: 113%;
+  height: 1px;
+  background-color: #00000080;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  right: 50%;
+}
+
+.total-div .word {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.total-div .num {
+  font-weight: bold;
+  font-size: 20px;
+  color: #2dac2d;
+}
+
+.prod-reset {
+  gap: 100px;
+}
+
+@media (max-width:500px) {
+  .prod-reset {
+    gap: 50px;
+  }
+}
+
+.navincart {
+  display: none;
 }
