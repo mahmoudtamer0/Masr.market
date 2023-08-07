@@ -56,7 +56,7 @@ function ProductList() {
                         return (
                             <div className="col-lg-3 col-12 col-md-4 col-sm-6" key={product.id}>
                                 <div className="card card-product">
-                                    <img src={product.image} className="card-img-top" alt="..." />
+                                    <img src={product.image} loading='lazy' className="card-img-top" alt="..." />
                                     <div className="card-body">
                                         <Link className="card-title title-card" to={`/products/${product.id}`}>{product.title.slice(0, 50)} ...</Link>
                                         <p className="card-text">{product.description.slice(0, 60)} ...</p>
