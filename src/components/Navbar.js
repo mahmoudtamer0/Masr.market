@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import './navbar.css'
-import { faFontAwesome } from "@fortawesome/free-regular-svg-icons";
-function Navbar() {
+import { useState } from "react";
+import { useEffect } from "react";
+function Navbar(props) {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container">
