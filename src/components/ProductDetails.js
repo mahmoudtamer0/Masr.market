@@ -19,6 +19,7 @@ function ProductDetails() {
             image: product.image,
         })
     }
+
     return (
         <div className="container maincart">
 
