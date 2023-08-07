@@ -60,6 +60,7 @@ function ProductList() {
                                     <div className="card-body">
                                         <Link className="card-title title-card" to={`/products/${product.id}`}>{product.title.slice(0, 50)} ...</Link>
                                         <p className="card-text">{product.description.slice(0, 60)} ...</p>
+
                                         <h6>price : {product.price}$</h6>
                                         <Link className="btn btn-prod" to={`/products/${product.id}`}>Details</Link>
                                     </div>

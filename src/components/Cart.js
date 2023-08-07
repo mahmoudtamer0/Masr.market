@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 import Navbar from './Navbar'
 
+
 function Cart() {
 
     const [products, setProducts] = useState([])
@@ -32,9 +33,10 @@ function Cart() {
             <div className="container">
                 <h2 className="text-center">Cart.</h2>
                 <div className="row prod-reset">
-                    <div className="prods col-lg-7 col-md-7 col-sm-12 col-12">
-                        {products.length !== 0 ? products.map(product => {
-                            return (
+
+                    {products.length !== 0 ? products.map(product => {
+                        return (
+                            <div className="prods col-lg-7 col-md-7 col-sm-12 col-12">
                                 <div className="cartproduct" key={product.id}>
                                     <div className="cartimg">
                                         <img src={product.image}></img>
@@ -42,7 +44,7 @@ function Cart() {
                                     <div className="boxcontent">
                                         <div>
                                             <h3>{product.title}</h3>
-                                            <p>Price:  {product.price}$</p>
+                                            <p>Price: {product.price}$</p>
                                             <div className="counterdiv">
                                                 <span>Count: </span>
                                                 <select >
@@ -59,11 +61,11 @@ function Cart() {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                            )
-                        }) : <div className="noprod"><h4 className="text-center">no products selected</h4></div>}
-                    </div>
-                    <div className="col-12 col-lg-3 col-md-3 col-sm-12  reset-div">
+                        )
+                    }) : <div className="noprod"><h4 className="text-center">no products selected</h4></div>}
+                    {products.length !== 0 && <div className="col-12 col-lg-3 col-md-3 col-sm-12  reset-div">
                         <h2>Reset</h2>
 
                         <div><span>Products Price: </span> <span>{totalprods}$</span></div>
@@ -71,7 +73,8 @@ function Cart() {
                         <div><span>Deleviery: </span>{deleviery}$</div>
                         <div><span>Discount: </span>{discount}$</div>
                         <div className="total-div"><span className="word">Total: </span><span className="num">{parseFloat(+total).toFixed(2)}$</span></div>
-                    </div>
+                    </div>}
+
                 </div >
             </div >
             <div className="navincart"><Navbar /></div>

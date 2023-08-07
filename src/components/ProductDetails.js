@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import './proddet.css'
 import axios from "axios";
+import { useNavigate } from "react-router-dom"
 function ProductDetails() {
     const { productId } = useParams();
     const api_url = 'https://btngan-data.onrender.com/products';
@@ -10,6 +11,7 @@ function ProductDetails() {
         fetch(`${api_url}/${productId}`)
             .then(res => res.json()).then(data => setProduct(data))
     }, [])
+    let navigate = useNavigate()
 
     const addtoserver = () => {
         axios.post('https://btngan-data.onrender.com/cart', {
@@ -17,7 +19,7 @@ function ProductDetails() {
             title: product.title,
             price: product.price,
             image: product.image,
-        })
+        }).then(() => { navigate('/cart') })
     }
 
     return (
@@ -28,7 +30,8 @@ function ProductDetails() {
                 <img src={product.image} />
             </div>
             <p> {product.description}</p>
-            <button onClick={() => addtoserver()}>add to cart</button>
+            <div className="pricediv">Price: <span className="spanprice">{product.price}$</span></div>
+            <button className="cartbtn" onClick={() => addtoserver()}>Add to Cart</button>
         </div>
     )
 }

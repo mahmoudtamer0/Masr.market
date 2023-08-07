@@ -247,3 +247,23 @@ code {
 .navincart {
   display: none;
 }
+
+.cartbtn {
+  border: none;
+  background-color: #ed8a8a;
+  color: white;
+  padding: 10px 23px;
+  border-radius: 15px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.pricediv {
+  margin: 25px 0;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.pricediv span {
+  color: #ed8a8a;
+}
