@@ -1,9 +1,16 @@
 import './productlist.css'
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ClipLoader from "react-spinners/ClipLoader";
-function ProductList() {
+import axios from 'axios';
+import { useRef } from 'react';
+import Swal from "sweetalert2";
+function ProductList(props) {
+
+    const { addtoserver, cartErr } = props;
     const api_url = 'https://btngan-data.onrender.com/products';
+
+    let navigate = useNavigate()
 
     const [Products, setProducts] = useState();
     const [categories, setCategories] = useState([]);
@@ -33,22 +40,29 @@ function ProductList() {
         setLoading(true)
     }, [])
 
+    let addref = useRef()
+
     return (
         <div className='product-list'>
-            <h2 className="text-center">Our Products</h2>
             <div className="container">
-                <div className="btn-group dropend">
-                    <button id='bttt' type="button" className="down-btn btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Categories
-                    </button>
-                    <ul className="dropdown-menu">
-                        <li><button className='dropdown-item' onClick={() => getProducts()}>All</button></li>
-                        {categories.map(cat => {
-                            return (
-                                <li key={cat}><button className='dropdown-item' onClick={() => getincategories(cat)}>{cat}</button></li>
-                            )
-                        })}
-                    </ul>
+                <div className='d-flex justify-content-between'>
+                    <div>
+                        <h2>منتجاتنا</h2>
+                        <p className='title-p'>تسوق احدث المنتجات المميزة المضافة جديد</p>
+                    </div>
+                    <div className="btn-group dropend">
+                        <button id='bttt' type="button" className="down-btn btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </button>
+                        <ul className="dropdown-menu">
+                            <li><button className='dropdown-item' onClick={() => getProducts()}>All</button></li>
+                            {categories.map(cat => {
+                                return (
+                                    <li key={cat}><button className='dropdown-item' onClick={() => getincategories(cat)}>{cat}</button></li>
+                                )
+                            })}
+                        </ul>
+                    </div>
                 </div>
 
                 <div className="row justify-content-center align-items-center products-box">
@@ -58,11 +72,24 @@ function ProductList() {
                                 <div className="card card-product">
                                     <img src={product.image} loading='lazy' className="card-img-top" alt="..." />
                                     <div className="card-body">
-                                        <Link className="card-title title-card" to={`/products/${product.id}`}>{product.title.slice(0, 50)} ...</Link>
-                                        <p className="card-text">{product.description.slice(0, 60)} ...</p>
+                                        <p className='prod-category'>{product.category}</p>
+                                        <Link className=" title-card" to={`/products/${product.id}`}>{product.title.slice(0, 50)}</Link>
+                                        <p className="card-text">{product.description.slice(0, 60)}</p>
+                                        <div className='d-flex align-items-center prod-price-details'>
+                                            <h6 className='prod-price'>{product.price} ج م</h6>
+                                            {product.discount_rate && <span className='prod-disc'>{product.discount_rate} ج م</span>}
+                                        </div>
+                                        <div className='d-flex actions-div'>
+                                            {/* <Link className="btn btn-prod" to={`/products/${product.id}`}>Details</Link> */}
 
-                                        <h6>price : {product.price}$</h6>
-                                        <Link className="btn btn-prod" to={`/products/${product.id}`}>Details</Link>
+                                            <button onClick={() => addtoserver(product)} className='prod-add d-flex justify-content-center align-items-center'>
+                                                <span><i class="fa-solid fa-cart-plus"></i></span>
+                                                <span>اضف للسلة</span>
+                                            </button>
+
+                                            <button className='prod-fav'><i class="fa-regular fa-heart"></i></button>
+                                        </div>
+                                        {cartErr === 500 && console.log('added')}
                                     </div>
                                 </div >
                             </div>
@@ -71,7 +98,7 @@ function ProductList() {
                     }
                     )
                         : <div className='prodpre text-center'><ClipLoader
-                            color='#ed8a8a'
+                            color='#62D0B6'
                             loading={loading}
                             size={30}
                             aria-label="Loading Spinner"

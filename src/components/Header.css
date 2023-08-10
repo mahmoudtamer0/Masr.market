@@ -1,0 +1,52 @@
+.Header {
+    background-color: #F8F8F8;
+}
+
+.ul-header {
+    gap: 25px;
+}
+
+.ul-header li {
+    font-size: 12px;
+    border-left: 1px solid #ccc;
+    padding-left: 13px;
+}
+
+.ul-header li:last-child {
+    border: none;
+}
+
+.navcont {
+    gap: 25px;
+}
+
+.navcont div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.navcont div:not(:last-child) {
+    border-left: 1px solid #ccc;
+    padding-left: 13px;
+}
+
+.navcont i {
+    color: #62D0B6;
+}
+
+.navcont span {
+    font-size: 13px;
+}
+
+@media (max-width:777px) {
+    .navlinks {
+        display: none;
+    }
+
+    .navbar {
+        justify-content: center !important;
+    }
+
+}

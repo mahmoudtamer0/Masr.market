@@ -8,6 +8,7 @@
     height: 200px;
 }
 
+
 .products-box {
     padding-top: 30px;
 }
@@ -16,34 +17,126 @@
     max-height: 450px;
     min-height: 450px;
     margin-top: 50px;
-    /* border: solid #ed8a8a !important; */
-    border-radius: 10px !important;
+    border-radius: 4px !important;
+    background: #FFFFFF;
+    border: 1px solid var(#EEEEEE, #EEE);
 }
 
-/* .card-product p {
-    height: 103px;
-    overflow-y: hidden;
-    font-size: 10px;
-} */
-
-/* .card-product h5 {
-    font-size: 16px;
-} */
-
 .title-card {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
     text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    transition: 0.1s;
+    color: #333333;
 }
 
 .title-card:hover {
-    color: #ed8a8a;
+    color: #62D0B6;
 }
 
 .card-body {
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
-    align-items: center !important;
+    /* align-items: center !important; */
+}
+
+.product-list h2 {
+    margin: 0;
+
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 35px;
+    /* 145.833% */
+    color: #333333;
+}
+
+.product-list .title-p {
+
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    color: #666666;
+}
+
+.down-btn {
+    background-color: white;
+    color: #62D0B6;
+    border-color: #62D0B6;
+}
+
+.down-btn:hover {
+    background-color: #62D0B6 !important;
+    border-color: #62D0B6 !important;
+}
+
+.prod-category {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #62D0B6;
+}
+
+p.card-text {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.prod-price-details {
+    gap: 7px;
+}
+
+.prod-price {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    color: #F55157;
+    margin: 0;
+}
+
+.prod-disc {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    text-decoration: line-through;
+    color: #A5A5A5;
+}
+
+.prod-add,
+.prod-fav {
+    width: 90%;
+    border: none;
+    padding: 10px 0;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid #ccc;
+    transition: 0.2s;
+}
+
+.prod-add i {
+    font-size: 14px;
+}
+
+.prod-fav {
+    width: 20%;
+}
+
+.actions-div {
+    gap: 8px;
+}
+
+.actions-div button:first-of-type {
+    gap: 4px;
+}
+
+.actions-div button:first-of-type:hover {
+    background-color: #62D0B6;
+    color: white;
 }

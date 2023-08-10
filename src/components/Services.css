@@ -1,0 +1,72 @@
+.services {
+    padding: 70px 0px
+}
+
+.services-boxes {
+    padding: 18px;
+    border: 1px solid #ededed;
+}
+
+.services-boxes div p:first-of-type {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.services-boxes div i {
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    color: #62D0B6;
+}
+
+.services-boxes div p:last-of-type {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    color: #666;
+}
+
+.services-boxes>div:not(:last-child) {
+    border-left: 1px solid #ccc;
+    width: 33.33%;
+}
+
+.services-imges {
+    padding-top: 100px;
+
+}
+
+.services-imges img {
+    max-width: 100%;
+}
+
+@media (max-width:990px) {
+    .services-imges {
+        gap: 25px;
+        justify-content: center !important;
+    }
+
+    .services-imges img {
+        width: 100%;
+    }
+}
+
+@media(max-width:1100px) {
+    .services-boxes {
+        display: block !important;
+
+
+    }
+
+    .services-boxes>div {
+        width: 100% !important;
+        border-left: none !important;
+        margin-bottom: 37px;
+        padding-bottom: 27px;
+    }
+
+    .services-boxes>div:not(:last-of-type) {
+        border-bottom: 1px solid #ededed;
+    }
+}

@@ -2,6 +2,21 @@ li a.active {
     color: #ed8a8a !important;
 }
 
+p {
+    margin: 0;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0px 0px 13px -6px;
+    top: 0;
+}
+
+
+
 .nav-link {
     color: black !important;
     font-weight: bold !important;
@@ -11,8 +26,110 @@ li a.active {
     color: #ed8a8a !important;
     font-size: 26px !important;
     font-weight: bold !important;
+    gap: 2px;
+}
+
+.navbar-brand i {
+    color: #62D0B6;
+    font-size: 55px;
+}
+
+.navbar-brand p {
+    color: black;
 }
 
 /* .cart i {
     color: #ed8a8a;
 } */
+
+.nav-input-div {
+    width: 50%;
+    position: relative;
+}
+
+.nav-input-div input {
+    width: 100%;
+    height: 42px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.nav-input-div i {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 16px;
+    color: #a8a8a8;
+}
+
+.navlanks {
+    gap: 35px;
+}
+
+.navlanks i {
+    font-size: 20px;
+    background-color: #F8F8F8;
+    border-radius: 50%;
+    padding: 9px;
+    color: #666666;
+}
+
+.brand-text p:first-of-type {
+    font-size: 14px;
+    color: #A5A5A5;
+    font-weight: 400;
+}
+
+.brand-text p:last-of-type {
+    font-size: 15px;
+    color: #333333;
+    font-weight: 500;
+}
+
+.nav-cont {
+    gap: 5px;
+}
+
+.mobil-search {
+    display: none;
+}
+
+@media (max-width:990px) {
+    .nav-input-div {
+        display: none;
+
+    }
+
+    .the-brand i {
+        font-size: 35px;
+    }
+
+    .nav-cont i {
+        font-size: 22px;
+    }
+
+    .navbar-brand p {
+        font-size: 13px;
+    }
+
+    .navbar .container {
+        flex-wrap: nowrap !important;
+    }
+
+    .text-prof {
+        display: none;
+    }
+
+    .navlanks {
+        gap: 0;
+    }
+
+    .mobil-search {
+        display: block;
+        width: 92%;
+        position: relative;
+        margin: 10px;
+    }
+}
