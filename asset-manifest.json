@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/Masr.market/static/css/main.f48fcc29.css",
-    "main.js": "/Masr.market/static/js/main.b323045b.js",
+    "main.css": "/Masr.market/static/css/main.f4be5dee.css",
+    "main.js": "/Masr.market/static/js/main.d7a74a3f.js",
     "static/js/787.b8edf084.chunk.js": "/Masr.market/static/js/787.b8edf084.chunk.js",
-    "static/media/new-1.jpg": "/Masr.market/static/media/new-1.82d47a065aab9d9ca219.jpg",
-    "static/media/new-2.jpg": "/Masr.market/static/media/new-2.b2651ed2c7d97b76b0d1.jpg",
-    "static/media/landing4.jpg": "/Masr.market/static/media/landing4.34b843d278cfb435cc0a.jpg",
-    "static/media/new-3.jpg": "/Masr.market/static/media/new-3.7102c39bff0c752ca8d6.jpg",
+    "static/media/png": "/Masr.market/static/media/e721f0c38c536761f4ac958122251944.ea2f92e77f1a276a06b2.png",
+    "static/media/phone.png": "/Masr.market/static/media/phone.381389613bfb3ddd3e56.png",
+    "static/media/sound.png": "/Masr.market/static/media/sound.a31f3e850248f4045f4e.png",
+    "static/media/android.svg": "/Masr.market/static/media/android.1752f0a3dff31755707a0b05875bcfe0.svg",
+    "static/media/apple.svg": "/Masr.market/static/media/apple.9252a1ed9c03351e8cbf11665a0b6d53.svg",
     "index.html": "/Masr.market/index.html",
-    "main.f48fcc29.css.map": "/Masr.market/static/css/main.f48fcc29.css.map",
-    "main.b323045b.js.map": "/Masr.market/static/js/main.b323045b.js.map",
+    "main.f4be5dee.css.map": "/Masr.market/static/css/main.f4be5dee.css.map",
+    "main.d7a74a3f.js.map": "/Masr.market/static/js/main.d7a74a3f.js.map",
     "787.b8edf084.chunk.js.map": "/Masr.market/static/js/787.b8edf084.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f48fcc29.css",
-    "static/js/main.b323045b.js"
+    "static/css/main.f4be5dee.css",
+    "static/js/main.d7a74a3f.js"
   ]
 }
