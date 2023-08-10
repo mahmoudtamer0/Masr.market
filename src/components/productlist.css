@@ -140,3 +140,18 @@ p.card-text {
     background-color: #62D0B6;
     color: white;
 }
+
+.prod-details-btn a {
+    color: black;
+    text-decoration: none;
+    width: 100%;
+}
+
+.prod-details-btn a:hover {
+    background-color: #62D0B6;
+    color: white;
+}
+
+.prod-details-btn {
+    margin-top: 5px;
+}

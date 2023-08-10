@@ -1,6 +1,6 @@
 import './productlist.css'
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import ClipLoader from "react-spinners/ClipLoader";
 import axios from 'axios';
 import { useRef } from 'react';
@@ -81,13 +81,16 @@ function ProductList(props) {
                                         </div>
                                         <div className='d-flex actions-div'>
                                             {/* <Link className="btn btn-prod" to={`/products/${product.id}`}>Details</Link> */}
-
                                             <button onClick={() => addtoserver(product)} className='prod-add d-flex justify-content-center align-items-center'>
                                                 <span><i class="fa-solid fa-cart-plus"></i></span>
                                                 <span>اضف للسلة</span>
                                             </button>
-
                                             <button className='prod-fav'><i class="fa-regular fa-heart"></i></button>
+                                        </div>
+                                        <div className='prod-details-btn'>
+                                            <Link to={`/products/${product.id}`} className='prod-add d-flex justify-content-center align-items-center'>
+                                                تفاصيل المنتج
+                                            </Link>
                                         </div>
                                         {cartErr === 500 && console.log('added')}
                                     </div>
