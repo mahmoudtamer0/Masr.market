@@ -101,13 +101,15 @@ function ProductList(props) {
                         )
                     }
                     )
-                        : <div className='prodpre text-center'><ClipLoader
-                            color='#62D0B6'
-                            loading={loading}
-                            size={30}
-                            aria-label="Loading Spinner"
-                            data-testid="loader"
-                        /></div>}
+                        : <div className='prodpre text-center'>
+
+                            <ClipLoader
+                                color='#62D0B6'
+                                loading={loading}
+                                size={30}
+                                aria-label="Loading Spinner"
+                                data-testid="loader"
+                            /><div className='mt-3'>....Please wait a second</div></div>}
                 </div>
             </div>
         </div>
