@@ -45,7 +45,7 @@ p {
 }
 
 .count-details {
-    gap: 25px;
+    gap: 10px;
 }
 
 .count-details div {
@@ -63,7 +63,7 @@ p {
     color: #62D0B6;
 }
 
-.count-details i.r-color {
+.r-color {
     color: #F55157;
 }
 
@@ -165,3 +165,121 @@ p {
     background-color: white;
     color: #62D0B6;
 }
+
+@media (max-width:780px) {
+    .details-fav {
+        display: none !important;
+    }
+
+    .main-img {
+        width: 100%;
+        height: 55%;
+    }
+
+    .det-imgs-col {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .images-div {
+        flex-direction: column-reverse;
+    }
+
+    .det-imgs-col img {
+        width: 19%;
+        height: 70px;
+        border: 1px solid #c9c9c9;
+        cursor: pointer;
+        border-radius: 6px;
+        padding: 8px 2px;
+    }
+
+    .mainprod {
+        margin-top: 19px;
+
+    }
+
+    .prod-details {
+        margin-top: 50px !important;
+    }
+
+    .shareAndrev {
+        font-size: 14px;
+    }
+
+    .det-actions-div {
+        flex-direction: column;
+    }
+
+    .det-prod-add {
+        width: 100%;
+    }
+}
+
+.btn-copied-link {
+    transition: 0.2s;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
+.btn-copied-link:hover {
+    background-color: #ededed;
+
+}
+
+.copied-div {
+    gap: 10px;
+}
+
+.copied-div i {
+    font-size: 19px;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    border-radius: 50%;
+
+    width: 25px;
+    height: 25px;
+}
+
+.copied {
+    opacity: 0;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    background-color: #363636;
+    padding: 16px 51px;
+    border-radius: 11px;
+    color: #ededed;
+    transition: 0.3s linear;
+}
+
+.copiedClicked {
+
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    background-color: #363636;
+    padding: 16px 51px;
+    border-radius: 11px;
+    color: #ededed;
+    opacity: 1;
+    transition: 0.3s linear;
+}
+
+/* 
+@keyframes copied {
+    from {
+        display: block;
+    }
+
+    to {
+        display: none;
+    }
+} */

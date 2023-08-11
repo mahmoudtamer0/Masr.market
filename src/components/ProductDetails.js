@@ -1,12 +1,16 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Stars from "./Stars";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+
 import './proddet.css'
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import ProductImages from "./ProductImages";
 import { imageListClasses } from "@mui/material";
 function ProductDetails(props) {
+
+
     const [imgscounter, setImgscounter] = useState(0)
     const { productId } = useParams([]);
     const api_url = 'https://btngan-data.onrender.com/products';
@@ -40,7 +44,16 @@ function ProductDetails(props) {
         // setIsactive(index)
     }
 
-    //             <button className="cartbtn" onClick={() => addtoserver()}>Add to Cart</button>
+    const [copied, setCopied] = useState(false)
+
+    const handleCopied = () => {
+        setCopied(true)
+
+        setTimeout(() => {
+            setCopied(false)
+        }, 1500)
+    }
+
 
     return (
         <div className="mainprod">
@@ -60,39 +73,41 @@ function ProductDetails(props) {
                                 )
                             }) : null}
                         </div>
-                        {product.images ? <div className="main-img"><img src={product.images[imgscounter].url} /></div> : console.log('mo')}
+                        {product.images && <div className="main-img"><img src={product.images[imgscounter].url} /></div>}
                     </div>
 
                     <div className="col-lg-6 prod-details">
                         <div><h3 className="prod-title">{product.title}</h3></div>
                         <div className="d-flex align-items-center count-details mt-3">
                             <div className="d-flex align-items-center">
-                                <i class="fa-solid fa-boxes-packing i-color"></i>
-                                <span>المتبقي <span className="i-color">{product.remaining}</span> وحدة</span>
+                                <i className="fa-solid fa-boxes-packing i-color "></i>
+                                <span>المتبقي <span className={product.remaining < 10 ? 'r-color' : 'i-color'}>{product.remaining}</span> وحدة</span>
                             </div>
-                            <div className="d-flex align-items-center">
-                                <i class="fa-solid fa-fire r-color"></i>
+                            <div className="d-flex align-items-center details-box">
+                                <i className="fa-solid fa-fire r-color"></i>
                                 <span>تم شرائه <span className="i-color">{product.buyed}</span> مرة</span>
                             </div>
                         </div>
-                        <div className="d-flex align-items-center count-details mt-4">
+                        <div className="d-flex align-items-center count-details mt-4 details-box">
                             <div className="d-flex align-items-center">
-                                <Stars stars={product.rate} /> <span>({product.count}) تقييم  </span>
+                                <Stars stars={product.rate} /> <span className="shareAndrev">({product.count}) تقييم  </span>
 
                             </div>
-                            <div className="d-flex align-items-center c-pointer">
-                                <i class="fa-regular fa-heart"></i>
-                                <span>اضافة للمفضلة</span>
+                            <div className=" d-flex align-items-center details-fav c-pointer">
+                                <i className="fa-regular fa-heart"></i>
+                                <span className="shareAndrev">اضافة للمفضلة</span>
                             </div>
-                            <div className="d-flex align-items-center c-pointer">
-                                <i class="fa-solid fa-share-nodes"></i>
-                                <span>شارك المنتج</span>
-                            </div>
+                            <CopyToClipboard text={window.location.href}
+                                onCopy={() => handleCopied()}   >
+                                <div className="btn-copied-link d-flex align-items-center details-box">
+                                    <i className="fa-solid fa-share-nodes"></i>
+                                    <span className="shareAndrev">شارك المنتج</span>
+                                </div>
+                            </CopyToClipboard>
                         </div>
                         <div className="mt-4 prod-desc">
                             <h5>{product.description}</h5>
                         </div>
-
                         <div className="mt-5 prod-price-det">
                             <h3>{product.price} ج.م</h3>
                         </div>
@@ -110,6 +125,10 @@ function ProductDetails(props) {
                     </div>
 
                 </div>
+            </div >
+            <div className={copied ? 'copiedClicked copied-div d-flex align-items-center' : 'copied copied-div d-flex align-items-center'}>
+                <span>Link Copied</span>
+                <i class="fa-solid fa-check"></i>
             </div>
         </div >
     )

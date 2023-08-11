@@ -13,7 +13,7 @@ function ProductList(props) {
 
     let navigate = useNavigate()
 
-    const [Products, setProducts] = useState([]);
+    const [Products, setProducts] = useState();
     const [categories, setCategories] = useState([]);
     const getProducts = () => {
         fetch(api_url).then((res) => res.json()).then((data) => { setProducts(data) })
@@ -76,7 +76,7 @@ function ProductList(props) {
                                         <p className='prod-category'>{product.category}</p>
                                         <Link className=" title-card" to={`/products/${product.id}`}>{product.title.slice(0, 50)}</Link>
                                         <p className="card-text">{product.description.slice(0, 60)}</p>
-                                        <div className='d-flex align-items-center prod-price-details'>
+                                        <div className='d-flex align-items-center prod-prices'>
                                             <h6 className='prod-price'>{product.price} ج م</h6>
                                             {product.discount_rate && <span className='prod-disc'>{product.discount_rate} ج م</span>}
                                         </div>

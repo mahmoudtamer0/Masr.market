@@ -88,9 +88,11 @@ p.card-text {
     line-height: normal;
 }
 
-.prod-price-details {
+.prod-prices {
     gap: 7px;
+    margin: 5px 0;
 }
+
 
 .prod-price {
     font-size: 18px;
