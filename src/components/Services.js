@@ -8,21 +8,21 @@ function Services() {
             <div className="container">
                 <div className="d-flex services-boxes align-items-center justify-content-between">
                     <div className="d-flex align-items-center">
-                        <div><i class="fa-solid fa-truck-fast"></i></div>
+                        <div><i className="fa-solid fa-truck-fast"></i></div>
                         <div className="services-text">
                             <p>منتجات مضمونه</p>
                             <p>مدفوعات آمنة أقساط تصل إلى 12 شهرًا</p>
                         </div>
                     </div>
                     <div className="d-flex align-items-center">
-                        <div><i class="fa-solid fa-truck-ramp-box"></i></div>
+                        <div><i className="fa-solid fa-truck-ramp-box"></i></div>
                         <div className="services-text">
                             <p>شحن مجاني</p>
                             <p>مدفوعات آمنة أقساط تصل إلى 12 شهرًا</p>
                         </div>
                     </div>
                     <div className="d-flex align-items-center">
-                        <div><i class="fa-solid fa-wallet"></i></div>
+                        <div><i className="fa-solid fa-wallet"></i></div>
                         <div className="services-text">
                             <p>مدفوعات آمنة</p>
                             <p>مدفوعات آمنة أقساط تصل إلى 12 شهرًا</p>

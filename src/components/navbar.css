@@ -24,7 +24,7 @@ p {
 
 .navbar-brand {
     color: #ed8a8a !important;
-    font-size: 26px !important;
+    font-size: 20px !important;
     font-weight: bold !important;
     gap: 2px;
 }
@@ -74,6 +74,10 @@ p {
     border-radius: 50%;
     padding: 9px;
     color: #666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .brand-text p:first-of-type {
@@ -132,4 +136,22 @@ p {
         position: relative;
         margin: 10px;
     }
+}
+
+.cart-num-red span {
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    /* left: 75%; */
 }

@@ -18,10 +18,10 @@ function Cart(props) {
                     <NavLink className='cart-link' to='/cart'>سلة المشتريات</NavLink >
                 </div>
                 <div className="row prod-reset">
+                    <div className="prods col-lg-7 col-md-7 col-sm-12 col-12">
+                        {products.length !== 0 ? products.map(product => {
+                            return (
 
-                    {products.length !== 0 ? products.map(product => {
-                        return (
-                            <div className="prods col-lg-7 col-md-7 col-sm-12 col-12">
                                 <div className="cartproduct align-items-center" key={product.id}>
                                     <div className="cartimg">
                                         <img src={product.image}></img>
@@ -35,19 +35,18 @@ function Cart(props) {
                                         {product.price} ج.م
                                     </div>
                                     <div className="basketdiv">
-                                        <i onClick={() => { removeprod(product.id) }} class="fa-solid fa-xmark"></i>
+                                        <i onClick={() => { removeprod(product.id) }} className="fa-solid fa-xmark"></i>
                                     </div>
                                 </div>
-                            </div>
 
 
-                        )
-                    }) :
-                        <div className="noprod">
-                            <div><i class="fa-solid fa-bag-shopping"></i></div>
-                            <h4 className="text-center">السلة فارغة</h4>
-                            <h5 className="text-center">لا توجد منتجات حتي الان</h5>
-                        </div>}
+
+                            )
+                        }) : null}
+
+                    </div>
+
+
 
                     {
                         products.length >= 1 &&
@@ -68,10 +67,14 @@ function Cart(props) {
 
                         </div>
                     }
-
-
-
                 </div>
+                {products.length < 1 ?
+                    <div className="noprod">
+                        <div><i className="fa-solid fa-bag-shopping"></i></div>
+                        <h4 className="text-center">السلة فارغة</h4>
+                        <h5 className="text-center">لا توجد منتجات حتي الان</h5>
+                    </div>
+                    : null}
             </div >
 
         </div >

@@ -10,9 +10,10 @@ function ProductList(props) {
     const { addtoserver, cartErr } = props;
     const api_url = 'https://btngan-data.onrender.com/products';
 
+
     let navigate = useNavigate()
 
-    const [Products, setProducts] = useState();
+    const [Products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const getProducts = () => {
         fetch(api_url).then((res) => res.json()).then((data) => { setProducts(data) })
@@ -82,10 +83,10 @@ function ProductList(props) {
                                         <div className='d-flex actions-div'>
                                             {/* <Link className="btn btn-prod" to={`/products/${product.id}`}>Details</Link> */}
                                             <button onClick={() => addtoserver(product)} className='prod-add d-flex justify-content-center align-items-center'>
-                                                <span><i class="fa-solid fa-cart-plus"></i></span>
+                                                <span><i className="fa-solid fa-cart-plus"></i></span>
                                                 <span>اضف للسلة</span>
                                             </button>
-                                            <button className='prod-fav'><i class="fa-regular fa-heart"></i></button>
+                                            <button className='prod-fav'><i className="fa-regular fa-heart"></i></button>
                                         </div>
                                         <div className='prod-details-btn'>
                                             <Link to={`/products/${product.id}`} className='prod-add d-flex justify-content-center align-items-center'>

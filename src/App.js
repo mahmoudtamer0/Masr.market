@@ -41,6 +41,7 @@ function App() {
       .then(res => res.json())
       .then(data => { setProducts(data) })
   }
+
   const removeprod = (prodId) => {
     axios.delete(`https://btngan-data.onrender.com/cart/${prodId}`)
       .then(data => { getProductsInCart() })
@@ -95,7 +96,7 @@ function App() {
                   totalprods={totalprods}
                   tax={tax}
                 /></>} />
-              <Route path="/products/:productId" element={<ProductDetails />} />
+              <Route path="/products/:productId" element={<ProductDetails addtoserver={addtoserver} />} />
             </Routes>
             <Footer />
           </Router>

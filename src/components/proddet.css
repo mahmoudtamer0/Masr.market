@@ -1,11 +1,17 @@
-.imag-div img {
+/* .imag-div img {
     height: 300px;
     width: 290px !important;
     margin: auto !important;
+} */
+
+.mainprod {
+    margin-top: 105px;
+    padding: 77px 0;
+
 }
 
 
-h5 {
+/* h5 {
     text-align: center;
     font-size: 30px;
 }
@@ -17,4 +23,145 @@ p {
 .imag-div {
     text-align: center;
     margin: 35px;
+}
+
+.icon {
+    background-color: rebeccapurple;
+}
+*/
+.stars {
+    direction: ltr;
+    text-align: right;
+    color: #FFC62A;
+}
+
+.prod-details-det h3.prod-title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 147%;
+    color: #333333;
+    margin-bottom: 30px;
+}
+
+.count-details {
+    gap: 25px;
+}
+
+.count-details div {
+    gap: 10px;
+}
+
+.count-details div:not(:last-of-type) {
+    gap: 13px;
+    border-left: 1px solid #c9c9c9;
+    padding-left: 15px;
+    height: 15px;
+}
+
+.i-color {
+    color: #62D0B6;
+}
+
+.count-details i.r-color {
+    color: #F55157;
+}
+
+.prod-desc h5 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    color: #666666;
+}
+
+.c-pointer {
+    cursor: pointer;
+}
+
+.prod-price {
+    width: 77%;
+}
+
+
+.prod-price h3 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 147%;
+    color: #333333;
+}
+
+.images-div {
+    gap: 30px;
+}
+
+.main-img {
+    width: 65%;
+    height: 100%;
+}
+
+.main-img img {
+    border: 1px solid #c9c9c9;
+    padding: 35px 20px;
+    height: 100%;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.det-imgs-col {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.det-imgs-col img {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #c9c9c9;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 5px 10px;
+}
+
+.active-col-img {
+    border: 3px solid black !important;
+    filter: blur(1px);
+}
+
+.det-prod-add {
+    width: 45%;
+    border: none;
+    padding: 10px 0;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid #ccc;
+    transition: 0.2s;
+}
+
+.det-actions-div {
+    gap: 13px;
+}
+
+.det-prod-add:first-of-type {
+    background-color: #62D0B6;
+    color: white;
+    border: 1px solid #62D0B6;
+}
+
+.det-prod-add:last-of-type {
+    background-color: white;
+    color: #62D0B6;
+    border: 1px solid #62D0B6;
+}
+
+.det-prod-add:last-of-type:hover {
+    background-color: #62D0B6;
+    color: white;
+    border: 1px solid #62D0B6;
+}
+
+.det-prod-add:first-of-type:hover {
+    background-color: white;
+    color: #62D0B6;
 }

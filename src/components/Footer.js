@@ -14,7 +14,7 @@ function Footer() {
                     <div className="first-foot-main row justify-content-between">
                         <div className="email-div col-lg-3 d-flex align-items-center">
                             <div>
-                                <i class="fa-regular fa-envelope"></i>
+                                <i className="fa-regular fa-envelope"></i>
                             </div>
                             <div>
                                 <h3>الاشتراك فى النشرة البريدية</h3>
@@ -52,29 +52,29 @@ function Footer() {
                             <h4>حسابي</h4>
 
                             <ul>
-                                <li><i class="fa-solid fa-angles-left"></i> <a>حسابي</a> </li>
-                                <li><i class="fa-solid fa-angles-left"></i> <a>طلباطي</a> </li>
-                                <li><i class="fa-solid fa-angles-left"></i> <a>سلة المشتريات</a> </li>
-                                <li><i class="fa-solid fa-angles-left"></i> <a>المفضلة</a> </li>
+                                <li><i className="fa-solid fa-angles-left"></i> <a>حسابي</a> </li>
+                                <li><i className="fa-solid fa-angles-left"></i> <a>طلباطي</a> </li>
+                                <li><i className="fa-solid fa-angles-left"></i> <a>سلة المشتريات</a> </li>
+                                <li><i className="fa-solid fa-angles-left"></i> <a>المفضلة</a> </li>
                             </ul>
                         </div>
                         <div className='secondlayer-thrdiv col-lg-2 col-md-4 col-sm-12 col-12'>
                             <h4>روابط مهمة</h4>
                             <ul>
-                                <li><i class="fa-solid fa-angles-left"></i> <a>من نحن</a> </li>
-                                <li><i class="fa-solid fa-angles-left"></i> <a>سياسة خصوصية</a> </li>
-                                <li><i class="fa-solid fa-angles-left"></i> <a>الشروط و الاحكام</a> </li>
-                                <li><i class="fa-solid fa-angles-left"></i> <a>الدعم الفني</a> </li>
+                                <li><i className="fa-solid fa-angles-left"></i> <a>من نحن</a> </li>
+                                <li><i className="fa-solid fa-angles-left"></i> <a>سياسة خصوصية</a> </li>
+                                <li><i className="fa-solid fa-angles-left"></i> <a>الشروط و الاحكام</a> </li>
+                                <li><i className="fa-solid fa-angles-left"></i> <a>الدعم الفني</a> </li>
                             </ul>
                         </div>
 
                         <div className='foot-sociallinks col-lg-2 col-md-4 col-sm-12 col-12'>
                             <h4>تابعنا علي</h4>
                             <div>
-                                <i class="fa-brands fa-facebook-f"></i>
-                                <i class="fa-brands fa-linkedin-in"></i>
-                                <i class="fa-brands fa-instagram"></i>
-                                <i class="fa-brands fa-snapchat"></i>
+                                <i className="fa-brands fa-facebook-f"></i>
+                                <i className="fa-brands fa-linkedin-in"></i>
+                                <i className="fa-brands fa-instagram"></i>
+                                <i className="fa-brands fa-snapchat"></i>
                             </div>
                         </div>
                     </div>

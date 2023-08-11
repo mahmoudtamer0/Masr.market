@@ -6,10 +6,10 @@ export default function Header() {
     return (
         <div className="Header">
             <div className="container">
-                <nav class="navbar d-flex justify-content-between align-item-center">
+                <nav className="navbar d-flex justify-content-between align-item-center">
                     <div className="d-flex navcont">
-                        <div><span><i class="fa-solid fa-phone-flip"></i></span><span>01123511914</span></div>
-                        <div><span><i class="fa-regular fa-envelope"></i></span><span>Support@sala.sa</span></div>
+                        <div><span><i className="fa-solid fa-phone-flip"></i></span><span>01123511914</span></div>
+                        <div><span><i className="fa-regular fa-envelope"></i></span><span>Support@sala.sa</span></div>
                     </div>
                     <div className="navlinks">
                         <ul className="d-flex g-10 ul-header">
