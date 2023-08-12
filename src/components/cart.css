@@ -1,6 +1,6 @@
 .maincart {
     min-height: 79.5vh;
-    margin-top: 110px;
+    margin-top: 145px;
 }
 
 
@@ -36,20 +36,10 @@
     height: 100%;
 }
 
-.prods {
-    margin-top: 40px;
-}
-
 .basketdiv {
     cursor: pointer;
     margin-top: 5px;
     margin-right: 10px;
-    /* display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  cursor: pointer;
-  margin-right: 9px; */
 }
 
 .basketdiv i {
@@ -64,10 +54,6 @@
 }
 
 @media (max-width:555px) {
-    /* .basketdiv {
-    width: 25px;
-    height: 25px;
-  } */
 
     .basketdiv i {
         font-size: 14px;
