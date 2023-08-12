@@ -7,14 +7,14 @@ import { useRef } from 'react';
 import Swal from "sweetalert2";
 function ProductList(props) {
 
-    const { addtoserver, cartErr } = props;
-    const api_url = 'https://btngan-data.onrender.com/products';
-
-
-    let navigate = useNavigate()
-
+    //states
     const [Products, setProducts] = useState();
     const [categories, setCategories] = useState([]);
+    const { addtoserver, cartErr } = props;
+    const [loading, setLoading] = useState(false);
+
+    // Api's
+    const api_url = 'https://btngan-data.onrender.com/products';
     const getProducts = () => {
         fetch(api_url).then((res) => res.json()).then((data) => { setProducts(data) })
     }
@@ -35,13 +35,12 @@ function ProductList(props) {
         getcategories();
     }, [])
 
-    const [loading, setLoading] = useState(false);
-
+    //functions
     useEffect(() => {
         setLoading(true)
     }, [])
+    //end functions
 
-    let addref = useRef()
 
     return (
         <div className='product-list'>

@@ -4,7 +4,7 @@ import ProductList from "./components/Productlist";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import ProductDetails from "./components/ProductDetails";
 import Footer from "./components/Footer";
-import { useEffect, useState, CSSProperties } from "react";
+import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader"
 import './components/preloader.css'
 import Cart from "./components/Cart";
@@ -12,8 +12,15 @@ import Services from "./components/Services";
 import axios from "axios";
 
 function App() {
+  //states
   const [loading, setLoading] = useState(false);
+  const [loadingForCart, setLoadingForCart] = useState(false);
+  const [products, setProducts] = useState([])
+  const [countPercart, setCountPerCart] = useState(0);
+  const [cartErr, setCartErr] = useState(0)
+  const [added, setAdded] = useState(true)
 
+  //functions
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
@@ -22,19 +29,13 @@ function App() {
 
   }, [])
 
-  // cart
-
-  const [products, setProducts] = useState([])
-  const [countPercart, setCountPerCart] = useState(0);
-  const [cartErr, setCartErr] = useState(0)
-  const [added, setAdded] = useState(true)
-
   useEffect(() => {
     getProductsInCart()
   }, [countPercart])
 
+  //end functions
 
-
+  //Api's
   const getProductsInCart = () => {
     fetch('https://btngan-data.onrender.com/cart')
       .then(res => res.json())
@@ -42,8 +43,9 @@ function App() {
   }
 
   const removeprod = (prodId) => {
+    setLoadingForCart(true)
     axios.delete(`https://btngan-data.onrender.com/cart/${prodId}`)
-      .then(data => { getProductsInCart() })
+      .then(data => { getProductsInCart() }).then(() => setLoadingForCart(false))
   }
 
   async function addtoserver(product) {
@@ -61,6 +63,8 @@ function App() {
 
     }
   }
+
+  //end Api's
 
   let totalprods = 0;
   products.map(prod => { return (totalprods += prod.price) })
@@ -85,7 +89,14 @@ function App() {
             {/* <Header /> */}
             <Navbar cartLength={products.length} total={total} />
             <Routes>
-              <Route path="/" element={<><Landing /> <Services /> <ProductList addtoserver={addtoserver} cartErr={cartErr} /></>} />
+              <Route path="/" element={
+                <>
+                  <Landing />
+                  <Services />
+                  <ProductList
+                    addtoserver={addtoserver} cartErr={cartErr} />
+                </>
+              } />
               <Route path="/cart" element={<>
                 <Cart
                   removeprod={removeprod}
@@ -94,8 +105,11 @@ function App() {
                   deleviery={deleviery}
                   totalprods={totalprods}
                   tax={tax}
+                  loadingForCart={loadingForCart}
                 /></>} />
-              <Route path="/products/:productId" element={<ProductDetails addtoserver={addtoserver} />} />
+              <Route path="/products/:productId"
+                element={<ProductDetails addtoserver={addtoserver}
+                />} />
             </Routes>
             <Footer />
           </Router>

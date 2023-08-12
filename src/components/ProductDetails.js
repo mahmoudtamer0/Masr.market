@@ -4,38 +4,37 @@ import Stars from "./Stars";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import ClipLoader from "react-spinners/ClipLoader";
 import './proddet.css'
-import { useNavigate } from "react-router-dom"
 function ProductDetails(props) {
+    //stats
+    const [copied, setCopied] = useState(false)
+    const [loading, setLoading] = useState(false);
     const [imgscounter, setImgscounter] = useState(0)
     const { productId } = useParams([]);
+    const { addtoserver } = props;
     const api_url = 'https://btngan-data.onrender.com/products';
     const [product, setProduct] = useState();
+    //end states
+
+    //Api's
     useEffect(() => {
         fetch(`${api_url}/${productId}`)
             .then(res => res.json()).then(data => setProduct(data))
     }, [])
-    let navigate = useNavigate()
+    //end Api's
 
-    const { addtoserver } = props;
-
-    const [isActive, setIsactive] = useState(0)
-
-
-    const [copied, setCopied] = useState(false)
-
+    //functions
     const handleCopied = () => {
         setCopied(true)
-
         setTimeout(() => {
             setCopied(false)
         }, 1500)
     }
 
-    const [loading, setLoading] = useState(false);
-
     useEffect(() => {
         setLoading(true)
     }, [])
+
+    //end functions
 
 
     return (
@@ -46,17 +45,17 @@ function ProductDetails(props) {
                     <div className="mainsection row justify-content-between">
                         <div className="images-div col-lg-6 d-flex">
                             <div className="det-imgs-col">
-                                {product.images ? product.images.map((img, index) => {
+                                {product.images && product.images.map((img, index) => {
                                     return (
                                         <img
-                                            className={imgscounter === index ? "active-col-img" : ''}
+                                            className={imgscounter === index && "active-col-img"}
                                             key={index}
                                             src={img.url}
                                             onClick={() => setImgscounter(index)}
                                             id="cols_imgs"
                                         />
                                     )
-                                }) : null}
+                                })}
                             </div>
                             {product.images && <div className="main-img"><img src={product.images[imgscounter].url} /></div>}
                         </div>
@@ -129,4 +128,4 @@ function ProductDetails(props) {
     )
 }
 
-export default ProductDetails
+export default ProductDetails;

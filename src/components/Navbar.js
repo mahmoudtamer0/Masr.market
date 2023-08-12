@@ -49,16 +49,6 @@ function Navbar(props) {
                     </NavLink>
                 </div>
                 <div>
-                    {/* <ul>
-                        <li className="nav-item">
-                            <NavLink className="nav-link cart" to="/cart"><i className="fa-solid fa-cart-shopping"></i></NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" target="_blank" href="https://mahmoudtamer0.github.io/Masr.market_Management_System/">Edit_on_Products</a>
-                        </li>
-
-                    </ul> */}
-
                 </div>
             </div>
             <div className="nav-input-div mobil-search">

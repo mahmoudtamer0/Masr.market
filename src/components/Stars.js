@@ -4,9 +4,6 @@ import { useState } from 'react';
 import './proddet.css'
 export default function Stars(props) {
 
-
-    // const { stars } = props
-
     const stars = props.stars
 
     const ratingstar = Array.from({ length: 5 }, (elem, index) => {
