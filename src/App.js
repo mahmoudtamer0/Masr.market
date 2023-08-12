@@ -5,7 +5,6 @@ import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import ProductDetails from "./components/ProductDetails";
 import Footer from "./components/Footer";
 import { useEffect, useState, CSSProperties } from "react";
-import Header from './components/Header'
 import HashLoader from "react-spinners/HashLoader"
 import './components/preloader.css'
 import Cart from "./components/Cart";
