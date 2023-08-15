@@ -69,7 +69,7 @@ function Cart(props) {
                         products.length >= 1 &&
                         <div className="col-12 col-lg-3 col-md-3 col-sm-12  reset-div">
                             <h2>ملخص الطلب</h2>
-                            <div><span>مجموع المنتجات </span> <span>{totalprods} ج.م</span></div>
+                            <div><span>مجموع المنتجات </span> <span>{totalprods.toFixed(2)} ج.م</span></div>
                             <div><span>ضريبة(14%) </span>{tax} ج.م</div>
                             <div><span>التوصيل </span>{deleviery} ج.م</div>
                             <div className="promoinp">

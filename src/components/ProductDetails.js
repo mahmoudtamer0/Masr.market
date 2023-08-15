@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import Stars from "./Stars";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import ClipLoader from "react-spinners/ClipLoader";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './proddet.css'
 function ProductDetails(props) {
     //stats
@@ -24,10 +26,17 @@ function ProductDetails(props) {
 
     //functions
     const handleCopied = () => {
-        setCopied(true)
-        setTimeout(() => {
-            setCopied(false)
-        }, 1500)
+        toast.success('Link Copied', {
+            position: "bottom-left",
+            autoClose: 1500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            rtl: false,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
     }
 
     useEffect(() => {
@@ -119,11 +128,21 @@ function ProductDetails(props) {
                         data-testid="loader"
                     /><div className='mt-3'>.... Please wait a moment</div></div>}
 
-                <div className={copied ? 'copiedClicked copied-div d-flex align-items-center' : 'copied copied-div d-flex align-items-center'}>
-                    <span>Link Copied</span>
-                    <i class="fa-solid fa-check"></i>
-                </div>
+
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                limit={2}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </div >
     )
 }

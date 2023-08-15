@@ -60,7 +60,7 @@ function App() {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "colored",
+      theme: "dark",
     });
     try {
       let res = await axios.post('https://btngan-data.onrender.com/cart', {
@@ -121,7 +121,7 @@ function App() {
                     pauseOnFocusLoss
                     draggable
                     pauseOnHover
-                    theme="colored"
+                    theme="dark"
                   />
                 </>
               } />
