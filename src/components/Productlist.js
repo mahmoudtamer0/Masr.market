@@ -2,10 +2,9 @@ import './productlist.css'
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import ClipLoader from "react-spinners/ClipLoader";
-import axios from 'axios';
-import { useRef } from 'react';
-import Swal from "sweetalert2";
+
 function ProductList(props) {
+
 
     //states
     const [Products, setProducts] = useState();

@@ -10,6 +10,9 @@ import './components/preloader.css'
 import Cart from "./components/Cart";
 import Services from "./components/Services";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   //states
@@ -49,15 +52,27 @@ function App() {
   }
 
   async function addtoserver(product) {
+    toast.success(`تم اضافته الي السلة`, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     try {
       let res = await axios.post('https://btngan-data.onrender.com/cart', {
         id: product.id,
         title: product.title,
         price: product.price,
         image: product.image,
-      }).then(data => { getProductsInCart() })
+      }).then(data => {
+        getProductsInCart()
+      })
       if (res.status === 200) {
-        setCountPerCart((prev) => prev += 1)
+        setCountPerCart((prev) => prev += 1);
       }
     } catch (err) {
 
@@ -95,6 +110,19 @@ function App() {
                   <Services />
                   <ProductList
                     addtoserver={addtoserver} cartErr={cartErr} />
+                  <ToastContainer
+                    position="top-right"
+                    autoClose={2000}
+                    limit={2}
+                    hideProgressBar={false}
+                    newestOnTop
+                    closeOnClick
+                    rtl
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored"
+                  />
                 </>
               } />
               <Route path="/cart" element={<>

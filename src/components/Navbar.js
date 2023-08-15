@@ -43,7 +43,7 @@ function Navbar(props) {
                             </div>
                             <div className="brand-text">
                                 <p>سلة المشتريات</p>
-                                <p>{total} ج.م</p>
+                                <p>{total.toFixed(2)} ج.م</p>
                             </div>
                         </div>
                     </NavLink>
