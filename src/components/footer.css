@@ -31,7 +31,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    width: 360px;
+    width: 300px;
     color: #666666;
 }
 
@@ -171,18 +171,6 @@ ul {
 }
 
 @media (max-width:780px) {
-    /* .foot-sec-main {
-        text-align: center;
-    }
-
-    .secondlayer-firstdiv p {
-        margin: auto;
-        width: 100%;
-    }
-
-    .foot-sociallinks div {
-        justify-content: center;
-    } */
 
     .first-foot-main {
         gap: 35px;
@@ -210,6 +198,16 @@ ul {
 .foot-lastlayer {
     padding: 14px 0;
     background-color: #1D1F1F;
+}
+
+@media (max-width:1290px) {
+    .first-foot-main {
+        gap: 35px;
+    }
+
+    .email-div p {
+        width: 250px;
+    }
 }
 
 .foot-last-fdiv {

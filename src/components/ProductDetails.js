@@ -74,7 +74,7 @@ function ProductDetails(props) {
                                 {product.images && product.images.map((img, index) => {
                                     return (
                                         <img
-                                            className={imgscounter === index && "active-col-img"}
+                                            className={imgscounter === index ? "active-col-img" : undefined}
                                             key={index}
                                             src={img.url}
                                             onClick={() => setImgscounter(index)}
