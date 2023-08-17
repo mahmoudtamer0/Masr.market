@@ -1,7 +1,7 @@
 import './productlist.css'
 import { useState, useEffect } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
 import ClipLoader from "react-spinners/ClipLoader";
+import Product from './Product';
 
 function ProductList(props) {
 
@@ -9,7 +9,7 @@ function ProductList(props) {
     //states
     const [Products, setProducts] = useState();
     const [categories, setCategories] = useState([]);
-    const { addtoserver, cartErr } = props;
+    const { handeladdprod, cart } = props;
     const [loading, setLoading] = useState(false);
 
     // Api's
@@ -67,35 +67,7 @@ function ProductList(props) {
                 <div className="row justify-content-center align-items-center products-box">
                     {Products ? Products.map((product) => {
                         return (
-                            <div className="col-lg-3 col-12 col-md-4 col-sm-6" key={product.id}>
-                                <div className="card card-product">
-                                    <img src={product.image} loading='lazy' className="card-img-top" alt="..." />
-                                    <div className="card-body">
-                                        <p className='prod-category'>{product.category}</p>
-                                        <Link className=" title-card" to={`/products/${product.id}`}>{product.title.slice(0, 50)}</Link>
-                                        <p className="card-text">{product.description.slice(0, 60)}</p>
-                                        <div className='d-flex align-items-center prod-prices'>
-                                            <h6 className='prod-price'>{product.price} ج م</h6>
-                                            {product.discount_rate && <span className='prod-disc'>{product.discount_rate} ج م</span>}
-                                        </div>
-                                        <div className='d-flex actions-div'>
-                                            {/* <Link className="btn btn-prod" to={`/products/${product.id}`}>Details</Link> */}
-                                            <button onClick={() => addtoserver(product)} className='prod-add d-flex justify-content-center align-items-center'>
-                                                <span><i className="fa-solid fa-cart-plus"></i></span>
-                                                <span>اضف للسلة</span>
-                                            </button>
-                                            <button className='prod-fav'><i className="fa-regular fa-heart"></i></button>
-                                        </div>
-                                        <div className='prod-details-btn'>
-                                            <Link to={`/products/${product.id}`} className='prod-add d-flex justify-content-center align-items-center'>
-                                                تفاصيل المنتج
-                                            </Link>
-                                        </div>
-                                        {cartErr === 500 && console.log('added')}
-                                    </div>
-                                </div >
-                            </div>
-
+                            <Product key={product.id} cart={cart} handeladdprod={handeladdprod} product={product} />
                         )
                     }
                     )

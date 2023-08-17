@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import ProductList from "./components/Productlist";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router, json } from "react-router-dom";
 import ProductDetails from "./components/ProductDetails";
 import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
@@ -9,16 +9,18 @@ import HashLoader from "react-spinners/HashLoader"
 import './components/preloader.css'
 import Cart from "./components/Cart";
 import Services from "./components/Services";
-import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from "./components/ScrollToTop";
+
+const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart")) || "[]";
 
 
 function App() {
   //states
   const [loading, setLoading] = useState(false);
   const [loadingForCart, setLoadingForCart] = useState(false);
-  const [products, setProducts] = useState([])
+  const [cart, setCart] = useState(cartFromLocalStorage)
   const [countPercart, setCountPerCart] = useState(0);
   const [cartErr, setCartErr] = useState(0)
   const [added, setAdded] = useState(true)
@@ -32,60 +34,54 @@ function App() {
 
   }, [])
 
-  useEffect(() => {
-    getProductsInCart()
-  }, [countPercart])
-
   //end functions
 
-  //Api's
-  const getProductsInCart = () => {
-    fetch('https://btngan-data.onrender.com/cart')
-      .then(res => res.json())
-      .then(data => { setProducts(data) })
-  }
 
-  const removeprod = (prodId) => {
-    setLoadingForCart(true)
-    axios.delete(`https://btngan-data.onrender.com/cart/${prodId}`)
-      .then(data => { getProductsInCart() }).then(() => setLoadingForCart(false))
-  }
 
-  async function addtoserver(product) {
-    toast.success(`تم اضافته الي السلة`, {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-    try {
-      let res = await axios.post('https://btngan-data.onrender.com/cart', {
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        image: product.image,
-      }).then(data => {
-        getProductsInCart()
-      })
-      if (res.status === 200) {
-        setCountPerCart((prev) => prev += 1);
-      }
-    } catch (err) {
-
+  const handeladdprod = (product) => {
+    const productexist = cart.find((prod) => prod.id === product.id);
+    if (productexist) {
+      setCart(cart.map((prod) => prod.id === product.id ?
+        { ...productexist, quantity: productexist.quantity + 1 } : prod))
+    }
+    else {
+      setCart([...cart, { ...product, quantity: 1 }])
     }
   }
 
-  //end Api's
+  const removeprod = (product) => {
+    setLoadingForCart(true)
+    setTimeout(() => {
+      setLoadingForCart(false)
+      setCart(cart.filter(prod => prod.id !== product.id))
+    }, 200);
 
-  let totalprods = 0;
-  products.map(prod => { return (totalprods += prod.price) })
+  }
+
+  const handledecprod = (product) => {
+
+    const productexist = cart.find((prod) => prod.id === product.id)
+    if (productexist?.quantity === 1) {
+      return 0;
+    } else {
+      setCart(
+        cart.map((prod) =>
+          prod.id === product.id
+            ? { ...productexist, quantity: productexist.quantity - 1 }
+            : prod))
+    }
+  }
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart))
+  }, [cart])
+
+
+
+  let totalprods = cart.reduce((price, prod) => price + prod.quantity * prod.price, 0)
   let tax = Math.floor(totalprods * 0.14);
   let deleviery = 0
-  { products.length >= 1 && (deleviery = 21) }
+  { cart.length >= 1 && (deleviery = 21) }
 
   let total = totalprods + tax + deleviery
 
@@ -101,15 +97,18 @@ function App() {
             data-testid="loader"
           /></div> : <div >
           <Router basename="/Masr.market">
-            {/* <Header /> */}
-            <Navbar cartLength={products.length} total={total} />
+            <ScrollToTop />
+            <Navbar cartLength={cart.length} total={total} />
             <Routes>
               <Route path="/" element={
                 <>
                   <Landing />
                   <Services />
                   <ProductList
-                    addtoserver={addtoserver} cartErr={cartErr} />
+                    // addtoserver={addtoserver}
+                    cart={cart}
+                    cartErr={cartErr}
+                    handeladdprod={handeladdprod} />
                   <ToastContainer
                     position="top-right"
                     autoClose={2000}
@@ -128,7 +127,9 @@ function App() {
               <Route path="/cart" element={<>
                 <Cart
                   removeprod={removeprod}
-                  products={products}
+                  handledecprod={handledecprod}
+                  handeladdprod={handeladdprod}
+                  products={cart}
                   total={total}
                   deleviery={deleviery}
                   totalprods={totalprods}
@@ -136,7 +137,7 @@ function App() {
                   loadingForCart={loadingForCart}
                 /></>} />
               <Route path="/products/:productId"
-                element={<ProductDetails addtoserver={addtoserver}
+                element={<ProductDetails cart={cart} addtoserver={handeladdprod}
                 />} />
             </Routes>
             <Footer />

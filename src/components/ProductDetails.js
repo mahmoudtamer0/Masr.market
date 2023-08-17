@@ -6,16 +6,33 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './proddet.css'
+import { Link } from "react-router-dom";
 function ProductDetails(props) {
+
     //stats
     const [copied, setCopied] = useState(false)
     const [loading, setLoading] = useState(false);
     const [imgscounter, setImgscounter] = useState(0)
     const { productId } = useParams([]);
-    const { addtoserver } = props;
+    const { addtoserver, cart } = props;
     const api_url = 'https://btngan-data.onrender.com/products';
     const [product, setProduct] = useState();
     //end states
+
+    const [added, setAdded] = useState(false)
+
+    useEffect(() => {
+        const Find = cart.find(item => item.id == product?.id)
+        Find ? setAdded(true) : setAdded(false)
+    }, [cart,])
+
+    const handlecadd = (product) => {
+        addtoserver(product)
+        const Find = cart.find(item => item.id == product.id)
+        if (Find) {
+            setAdded(true);
+        } else setAdded(true);
+    }
 
     //Api's
     useEffect(() => {
@@ -105,11 +122,17 @@ function ProductDetails(props) {
                                 <h3>{product.price} ج.م</h3>
                             </div>
                             <div className='d-flex det-actions-div mt-4'>
-                                {/* <Link className="btn btn-prod" to={`/products/${product.id}`}>Details</Link> */}
-                                <button onClick={() => addtoserver(product)} className='det-prod-add d-flex justify-content-center align-items-center'>
-                                    <span><i className="fa-solid fa-cart-plus"></i></span>
-                                    <span>اضف للسلة</span>
-                                </button>
+                                {!added
+                                    ?
+                                    <button onClick={() => handlecadd(product)} className='det-prod-add d-flex justify-content-center align-items-center'>
+                                        <span><i className="fa-solid fa-cart-plus"></i></span>
+                                        <span>اضف للسلة</span>
+                                    </button>
+                                    :
+                                    <Link to="/cart" disabled={true} className='det-prod-add alredyadded d-flex justify-content-center align-items-center'>
+                                        <span>تمت اضافاته</span>
+                                        <span><i style={{ color: "#fff" }} className="fa-solid fa-check"></i></span>
+                                    </Link>}
                                 <button className='det-prod-add d-flex justify-content-center align-items-center'>
                                     <span><i className="fa-solid fa-cart-plus"></i></span>
                                     <span>شراء سريع</span>

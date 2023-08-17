@@ -1,34 +1,9 @@
-/* .imag-div img {
-    height: 300px;
-    width: 290px !important;
-    margin: auto !important;
-} */
-
 .mainprod {
     margin-top: 105px;
     padding: 77px 0;
 
 }
 
-
-/* h5 {
-    text-align: center;
-    font-size: 30px;
-}
-
-p {
-    font-size: 20px;
-}
-
-.imag-div {
-    text-align: center;
-    margin: 35px;
-}
-
-.icon {
-    background-color: rebeccapurple;
-}
-*/
 .stars {
     direction: ltr;
     text-align: right;
@@ -96,8 +71,8 @@ p {
 }
 
 .main-img {
-    width: 65%;
-    height: 100%;
+    width: 415px;
+    height: 520px;
 }
 
 .main-img img {
@@ -149,6 +124,14 @@ p {
     border: 1px solid #62D0B6;
 }
 
+.det-actions-div .alredyadded {
+    background-color: #62D0B6 !important;
+    color: white !important;
+    border: 1px solid #62D0B6;
+    text-decoration: none;
+}
+
+
 .det-prod-add:last-of-type {
     background-color: white;
     color: #62D0B6;
@@ -172,8 +155,9 @@ p {
     }
 
     .main-img {
-        width: 100%;
-        height: 55%;
+        width: 285px;
+        height: 250px;
+        margin: auto;
     }
 
     .det-imgs-col {
@@ -197,11 +181,6 @@ p {
         padding: 8px 2px;
     }
 
-    .mainprod {
-        margin-top: 19px;
-
-    }
-
     .prod-details {
         margin-top: 50px !important;
     }
@@ -216,6 +195,14 @@ p {
 
     .det-prod-add {
         width: 100%;
+    }
+}
+
+@media (max-width:390px) {
+    .main-img {
+        width: 355px;
+        height: 280px;
+        margin: auto;
     }
 }
 
@@ -272,14 +259,3 @@ p {
     opacity: 1;
     transition: 0.3s linear;
 }
-
-/* 
-@keyframes copied {
-    from {
-        display: block;
-    }
-
-    to {
-        display: none;
-    }
-} */

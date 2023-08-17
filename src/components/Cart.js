@@ -2,12 +2,16 @@ import ClipLoader from "react-spinners/ClipLoader";
 import './cart.css'
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom"
+import ProductInCart from "./ProductInCart";
 function Cart(props) {
     //states
     const { products, removeprod, tax, totalprods,
-        total, deleviery, loadingForCart } = props;
+        total, deleviery, loadingForCart, handeladdprod, handledecprod } = props;
     const [loading, setLoading] = useState(false);
     //end states
+
+    let totalquantity = 0;
+    products.map(prod => totalquantity += prod.quantity)
 
     //functions
     useEffect(() => {
@@ -38,29 +42,10 @@ function Cart(props) {
                                     .... Please wait a moment
                                 </div>
                             </div>}
-                        <div className={loadingForCart ? 'd-none' : 'd-block'}>
+                        <div className={loadingForCart ? 'd-none' : 'd-block w-100'}>
                             {products && products.map(product => {
                                 return (
-                                    <div className="cartproduct align-items-center"
-                                        key={product.id}>
-                                        <div className="cartimg">
-                                            <img src={product.image}></img>
-                                        </div>
-                                        <div className="boxcontent">
-                                            <div>
-                                                <h3>{product.title}</h3>
-                                            </div>
-                                        </div>
-                                        <div className="cart-prod-price">
-                                            {product.price} ج.م
-                                        </div>
-                                        <div className="basketdiv">
-                                            <i
-                                                onClick={() => { removeprod(product.id) }}
-                                                className="fa-solid fa-xmark">
-                                            </i>
-                                        </div>
-                                    </div>
+                                    <ProductInCart removeprod={removeprod} handledecprod={handledecprod} handeladdprod={handeladdprod} product={product} />
                                 )
                             })}
                         </div>
@@ -69,7 +54,7 @@ function Cart(props) {
                         products.length >= 1 &&
                         <div className="col-12 col-lg-3 col-md-3 col-sm-12  reset-div">
                             <h2>ملخص الطلب</h2>
-                            <div><span>مجموع المنتجات </span> <span>{totalprods.toFixed(2)} ج.م</span></div>
+                            <div><span>مجموع المنتجات ({totalquantity})</span> <span>{totalprods.toFixed(2)} ج.م</span></div>
                             <div><span>ضريبة(14%) </span>{tax} ج.م</div>
                             <div><span>التوصيل </span>{deleviery} ج.م</div>
                             <div className="promoinp">
