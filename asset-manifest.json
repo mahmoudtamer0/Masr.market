@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Masr.market/static/css/main.5cdc9a63.css",
-    "main.js": "/Masr.market/static/js/main.a68d276a.js",
+    "main.js": "/Masr.market/static/js/main.f1721df9.js",
     "static/js/787.b8edf084.chunk.js": "/Masr.market/static/js/787.b8edf084.chunk.js",
     "static/media/png": "/Masr.market/static/media/e721f0c38c536761f4ac958122251944.ea2f92e77f1a276a06b2.png",
     "static/media/phone.png": "/Masr.market/static/media/phone.381389613bfb3ddd3e56.png",
@@ -10,11 +10,11 @@
     "static/media/apple.svg": "/Masr.market/static/media/apple.9252a1ed9c03351e8cbf11665a0b6d53.svg",
     "index.html": "/Masr.market/index.html",
     "main.5cdc9a63.css.map": "/Masr.market/static/css/main.5cdc9a63.css.map",
-    "main.a68d276a.js.map": "/Masr.market/static/js/main.a68d276a.js.map",
+    "main.f1721df9.js.map": "/Masr.market/static/js/main.f1721df9.js.map",
     "787.b8edf084.chunk.js.map": "/Masr.market/static/js/787.b8edf084.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5cdc9a63.css",
-    "static/js/main.a68d276a.js"
+    "static/js/main.f1721df9.js"
   ]
 }
