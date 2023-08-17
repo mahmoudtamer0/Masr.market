@@ -13,7 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from "./components/ScrollToTop";
 
-const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart")) || "[]";
+const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 function App() {
@@ -78,7 +78,7 @@ function App() {
 
 
 
-  let totalprods = cart.reduce((price, prod) => price + prod.quantity * prod.price, 0)
+  let totalprods = cart?.reduce((price, prod) => price + prod.quantity * prod.price, 0)
   let tax = Math.floor(totalprods * 0.14);
   let deleviery = 0
   { cart.length >= 1 && (deleviery = 21) }
