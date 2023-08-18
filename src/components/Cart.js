@@ -45,7 +45,12 @@ function Cart(props) {
                         <div className={loadingForCart ? 'd-none' : 'd-block w-100'}>
                             {products && products.map(product => {
                                 return (
-                                    <ProductInCart removeprod={removeprod} handledecprod={handledecprod} handeladdprod={handeladdprod} product={product} />
+                                    <ProductInCart
+                                        key={product.id}
+                                        removeprod={removeprod}
+                                        handledecprod={handledecprod}
+                                        handeladdprod={handeladdprod}
+                                        product={product} />
                                 )
                             })}
                         </div>

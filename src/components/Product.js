@@ -20,14 +20,14 @@ const Product = ({ product, handeladdprod, cart }) => {
     }
     return (
         <div className="col-lg-3 col-12 col-md-4 col-sm-6" key={product.id}>
-            <div className="card card-product">
+            <div style={{ minHeight: "500px" }} className="card card-product">
                 <img src={product.image} loading='lazy' className="card-img-top" alt="..." />
                 <div className="card-body">
-                    <p className='prod-category'>{product.category}</p>
-                    <Link className=" title-card" to={`/products/${product.id}`}>{product.title.slice(0, 50)}</Link>
-                    <p className="card-text">{product.description.slice(0, 60)}</p>
-                    <div className='d-flex align-items-center prod-prices'>
-                        <h6 className='prod-price'>{product.price} ج م</h6>
+                    <p className='mt-2 mb-2 prod-category'>{product.category}</p>
+                    <Link className="mt-2 mb-2 title-card" to={`/products/${product.id}`}>{product.title.length > 30 ? `${product.title.slice(0, 30)}...` : product.title.slice(0, 30)}</Link>
+                    <p className=" mt-2 mb-2 card-text">{product.description.length > 34 ? `${product.description.slice(0, 34)}...` : `${product.description}`}</p>
+                    <div className='justify-content-start align-items-center prod-prices'>
+                        <span style={{ marginLeft: "8px" }} className=' prod-price'>{product.price} ج م</span>
                         {product.discount_rate && <span className='prod-disc'>{product.discount_rate} ج م</span>}
                     </div>
                     <div className='d-flex actions-div'>

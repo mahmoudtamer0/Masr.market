@@ -4,9 +4,8 @@ const ProductInCart = ({ product, removeprod, handeladdprod, handledecprod }) =>
     const [quant, setQuant] = useState(1)
 
     return (
-        <div className='main-prod-INcart'>
-            <div className="cartproduct align-items-center"
-                key={product.id}>
+        <div key={product.id} className='main-prod-INcart'>
+            <div className="cartproduct align-items-center">
                 <div className="cartimg">
                     <img src={product.image}></img>
                 </div>
