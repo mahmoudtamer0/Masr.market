@@ -1,9 +1,6 @@
 import { NavLink } from "react-router-dom";
 import './navbar.css'
-import { useState } from "react";
-import { useEffect } from "react";
 function Navbar(props) {
-
     const { cartLength, total } = props;
     return (
         <nav className="navbar">

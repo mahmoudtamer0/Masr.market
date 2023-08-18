@@ -7,7 +7,7 @@ function ProductList(props) {
 
 
     //states
-    const [Products, setProducts] = useState();
+    const [Products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const { handeladdprod, cart } = props;
     const [loading, setLoading] = useState(false);
@@ -15,7 +15,7 @@ function ProductList(props) {
     // Api's
     const api_url = 'https://btngan-data.onrender.com/products';
     const getProducts = () => {
-        fetch(api_url).then((res) => res.json()).then((data) => { setProducts(data) })
+        fetch(api_url).then((res) => res.json()).then((data) => setProducts(data))
     }
     const getcategories = () => {
         fetch("https://btngan-data.onrender.com/catigories")
@@ -65,7 +65,7 @@ function ProductList(props) {
                 </div>
 
                 <div className="row justify-content-center align-items-center products-box">
-                    {Products ? Products.map((product) => {
+                    {Products.length > 0 ? Products.map((product) => {
                         return (
                             <Product key={product.id} cart={cart} handeladdprod={handeladdprod} product={product} />
                         )
@@ -79,7 +79,7 @@ function ProductList(props) {
                                 size={30}
                                 aria-label="Loading Spinner"
                                 data-testid="loader"
-                            /><div className='mt-3'>....Please wait a second</div></div>}
+                            /><div className='mt-3'>.... <i className="fa-regular fa-face-smile-beam" style={{ color: "#FFC62A" }}></i> Please wait a second waiting for server response </div></div>}
                 </div>
             </div>
         </div>

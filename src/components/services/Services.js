@@ -1,6 +1,5 @@
-import phoneImg from '../images/phone.png'
-import soundImg from '../images/sound.png'
-
+import phoneImg from '../../images/phone.png'
+import soundImg from '../../images/sound.png'
 import './Services.css'
 function Services() {
     return (
@@ -32,10 +31,10 @@ function Services() {
 
                 <div className='row align-items-center justify-content-between services-imges'>
                     <div className='col-lg-6 col-md-12 col-sm-12 col-12'>
-                        <img src={soundImg} />
+                        <img src={soundImg} alt='img' />
                     </div>
                     <div className='col-lg-6'>
-                        <img src={phoneImg} />
+                        <img src={phoneImg} alt='..' />
                     </div>
                 </div>
             </div>

@@ -1,10 +1,10 @@
 import './footer.css'
-import android from '../images/android.svg'
-import apple from '../images/apple.svg'
-import img from '../images/image.png'
-import img1 from '../images/image (1).png'
-import img2 from '../images/image (2).png'
-import img3 from '../images/image (3).png'
+import android from '../../images/android.svg'
+import apple from '../../images/apple.svg'
+import img from '../../images/image.png'
+import img1 from '../../images/image (1).png'
+import img2 from '../../images/image (2).png'
+import img3 from '../../images/image (3).png'
 function Footer() {
     return (
         <div className="footer">

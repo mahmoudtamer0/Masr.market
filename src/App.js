@@ -1,15 +1,15 @@
-import Navbar from "./components/Navbar";
-import Landing from "./components/Landing";
-import ProductList from "./components/Productlist";
-import { Route, Routes, BrowserRouter as Router, json } from "react-router-dom";
-import ProductDetails from "./components/ProductDetails";
-import Footer from "./components/Footer";
+import Navbar from "./components/navbar/Navbar";
+import Landing from "./components/landing/Landing";
+import ProductList from "./components/productsList/Productlist";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import ProductDetails from "./components/productDetails/ProductDetails";
+import Footer from "./components/footer/Footer";
 import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader"
 import './components/preloader.css'
-import Cart from "./components/Cart";
-import Services from "./components/Services";
-import { ToastContainer, toast } from 'react-toastify';
+import Cart from "./components/cart/Cart";
+import Services from "./components/services/Services";
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from "./components/ScrollToTop";
 

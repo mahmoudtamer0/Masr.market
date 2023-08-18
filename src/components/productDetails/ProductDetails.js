@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 function ProductDetails(props) {
 
     //stats
-    const [copied, setCopied] = useState(false)
+    // const [copied, setCopied] = useState(false)
     const [loading, setLoading] = useState(false);
     const [imgscounter, setImgscounter] = useState(0)
     const { productId } = useParams([]);
@@ -24,11 +24,11 @@ function ProductDetails(props) {
     useEffect(() => {
         const Find = cart.find(item => item.id == product?.id)
         Find ? setAdded(true) : setAdded(false)
-    }, [cart,])
+    }, [cart])
 
     const handlecadd = (product) => {
         addtoserver(product)
-        const Find = cart.find(item => item.id == product.id)
+        const Find = cart.find(item => item.id === product.id)
         if (Find) {
             setAdded(true);
         } else setAdded(true);
@@ -77,13 +77,14 @@ function ProductDetails(props) {
                                             className={imgscounter === index ? "active-col-img" : undefined}
                                             key={index}
                                             src={img.url}
+                                            alt="..."
                                             onClick={() => setImgscounter(index)}
                                             id="cols_imgs"
                                         />
                                     )
                                 })}
                             </div>
-                            {product.images && <div className="main-img"><img src={product.images[imgscounter].url} /></div>}
+                            {product.images && <div className="main-img"><img alt="..." src={product.images[imgscounter].url} /></div>}
                         </div>
 
                         <div className="col-lg-6 prod-details">

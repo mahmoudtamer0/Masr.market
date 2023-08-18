@@ -1,6 +1,3 @@
-import { FaStar, FaStarHalfAlt } from 'react-icons/fa'
-import { AiOutlineStar } from 'react-icons/ai'
-import { useState } from 'react';
 import './proddet.css'
 export default function Stars(props) {
 

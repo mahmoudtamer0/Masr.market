@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 const Product = ({ product, handeladdprod, cart }) => {
     const [added, setAdded] = useState(false)
-
     useEffect(() => {
         const find = cart.find(item => item.id === product.id)
         find ? setAdded(true) : setAdded(false)
