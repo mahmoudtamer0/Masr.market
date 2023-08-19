@@ -24,7 +24,7 @@ const Product = ({ product, handeladdprod, cart }) => {
                 <div className="card-body">
                     <p className='mt-2 mb-2 prod-category'>{product.category}</p>
                     <Link className="mt-2 mb-2 title-card" to={`/products/${product.id}`}>{product.title.length > 30 ? `${product.title.slice(0, 30)}...` : product.title.slice(0, 30)}</Link>
-                    <p className=" mt-2 mb-2 card-text">{product.description.length > 34 ? `${product.description.slice(0, 34)}...` : `${product.description}`}</p>
+                    <p className=" mt-2 mb-2 card-text">{product.description.length > 34 ? `${product.description.slice(0, 25)}...` : `${product.description}`}</p>
                     <div className='justify-content-start align-items-center prod-prices'>
                         <span style={{ marginLeft: "8px" }} className=' prod-price'>{product.price} ج م</span>
                         {product.discount_rate && <span className='prod-disc'>{product.discount_rate} ج م</span>}

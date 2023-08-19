@@ -3,6 +3,17 @@
     padding-bottom: 40px;
 }
 
+@media (max-width:750px) {
+    .main-action-div {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .main-action-div div:last-of-type {
+        margin: auto;
+    }
+}
+
 .card-product img {
     max-width: 100%;
     height: 200px;
