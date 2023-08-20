@@ -48,7 +48,7 @@ const Contactus = () => {
             <div className='container'>
                 <form onSubmit={sendEmail} ref={form} className='contact-form'>
                     <h2 className='contact-title text-center'> تواصل معنا</h2>
-                    <p style={{ fontSize: "14px" }} className='mb-1 text-center text-body-tertiary'>للشكاوة او المقترحات</p>
+                    <p style={{ fontSize: "14px" }} className='mb-1 text-center text-body-tertiary'>للشكاوي و المقترحات</p>
                     <p style={{ fontSize: "14px" }} className='mb-2 text-center text-body-tertiary'>هذه الرسالة سوف ترسل لنا علي هذا الايميل mahmoud.tamer.developer@gmail.com</p>
                     <div>
                         <div className=" mb-2">
