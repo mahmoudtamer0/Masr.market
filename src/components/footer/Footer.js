@@ -83,11 +83,14 @@ function Footer() {
             <div className='foot-lastlayer'>
                 <div className='container'>
                     <div className='foot-last-main row justify-content-between align-items-center'>
-                        <div className='col-lg-7 foot-last-fdiv'>
+                        <div className='col-lg-3 foot-last-fdiv'>
                             الحقوق محفوظة لمنصة سلة © 2023
                         </div>
-
-                        <div className='foot-last-secdiv col-lg-5 d-flex align-items-center'>
+                        <div className='foot-madby col-lg-3'>
+                            <h4 style={{ color: "white", fontSize: "14px", margin: "0" }}>Made By:
+                                <a href='https://www.linkedin.com/in/mahmoudtamer0' target='_blank'> Mahmoud Tamer </a></h4>
+                        </div>
+                        <div className='foot-last-secdiv col-lg-3 d-flex align-items-center'>
                             <h6>الرقم الضريبي : 5343322</h6>
                             <div className='d-flex'>
                                 <img src={img} />

@@ -2,6 +2,7 @@ import './productlist.css'
 import { useState, useEffect, useRef } from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
 import Product from './Product';
+import { Link } from 'react-router-dom';
 function ProductList(props) {
     //states
     const localValue = JSON.parse(localStorage.getItem("products"))
@@ -124,6 +125,10 @@ function ProductList(props) {
                                 aria-label="Loading Spinner"
                                 data-testid="loader"
                             /><div className='mt-3'>.... <i className="fa-regular fa-face-smile-beam" style={{ color: "#FFC62A" }}></i> Please wait a second waiting for server response </div></div>}
+                </div>
+                <div className='end-buttons w-50 d-flex justify-content-center'>
+                    <Link>تواصل معنا</Link>
+                    <Link>تعديل علي المنتجات</Link>
                 </div>
             </div>
         </div>

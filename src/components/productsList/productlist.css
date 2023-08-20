@@ -175,3 +175,38 @@ p.card-text {
 .prod-details-btn {
     margin-top: 5px;
 }
+
+.end-buttons {
+    gap: 10px;
+    margin-top: 80px;
+    margin: 80px auto 0;
+    align-items: center;
+}
+
+.end-buttons a {
+    text-decoration: none;
+    color: white;
+    background-color: #62D0B6;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    transition: 0.2s;
+    border: 2px solid #62D0B6;
+}
+
+.end-buttons a:hover {
+    background-color: white;
+    color: #62D0B6;
+}
+
+@media(max-width:990px) {
+    .end-buttons {
+        flex-wrap: wrap;
+        width: 100% !important;
+    }
+
+    .end-buttons a {
+        width: 100% !important;
+    }
+}

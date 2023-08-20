@@ -12,6 +12,7 @@ import Services from "./components/services/Services";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from "./components/ScrollToTop";
+import Contactus from "./components/contact us/Contactus";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -105,7 +106,6 @@ function App() {
                   <Landing />
                   <Services />
                   <ProductList
-                    // addtoserver={addtoserver}
                     cart={cart}
                     cartErr={cartErr}
                     handeladdprod={handeladdprod} />
@@ -139,6 +139,8 @@ function App() {
               <Route path="/products/:productId"
                 element={<ProductDetails cart={cart} addtoserver={handeladdprod}
                 />} />
+              <Route path="/contact-us"
+                element={<Contactus />} />
             </Routes>
             <Footer />
           </Router>

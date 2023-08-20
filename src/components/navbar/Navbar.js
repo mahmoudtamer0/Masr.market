@@ -21,14 +21,14 @@ function Navbar(props) {
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div className="d-flex navlanks align-items-center">
-                    <NavLink className=" navbar-brand align-items-center">
+                    <NavLink to={`/contact-us`} className=" navbar-brand align-items-center">
                         <div className="d-flex nav-cont">
                             <div>
-                                <i className="fa-regular fa-user"></i>
+                                <i className="fa-solid fa-message"></i>
                             </div>
                             <div className="brand-text text-prof">
                                 <p>مرحبا بك</p>
-                                <p>تسجيل دخول؟</p>
+                                <p>تواصل معنا</p>
                             </div>
                         </div>
                     </NavLink>

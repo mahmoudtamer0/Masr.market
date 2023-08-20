@@ -250,3 +250,12 @@ ul {
         justify-content: center;
     }
 }
+
+.foot-last-secdiv img {
+    width: 45px;
+}
+
+.foot-madby a {
+    color: #62D0B6;
+    margin-left: 4px;
+}
