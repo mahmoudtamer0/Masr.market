@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-const ProductInCart = ({ product, removeprod, handeladdprod, handledecprod }) => {
+const ProductInCart = ({ product, removeprod, handeladdprod, handledecprod, t }) => {
     const [quant, setQuant] = useState(1)
 
     return (
@@ -11,11 +12,11 @@ const ProductInCart = ({ product, removeprod, handeladdprod, handledecprod }) =>
                 </div>
                 <div className="boxcontent">
                     <div>
-                        <h3>{product.title}</h3>
+                        <Link to={`/products/${product.id}`}>{product.title}</Link>
                     </div>
                 </div>
                 <div className="cart-prod-price">
-                    {(product.price * product.quantity).toFixed(2)} ج.م
+                    {(product.price * product.quantity).toFixed(2)} {t("cart.total_curency")}
                 </div>
                 <div className="basketdiv">
                     <i
@@ -27,7 +28,7 @@ const ProductInCart = ({ product, removeprod, handeladdprod, handledecprod }) =>
             <div style={{ gap: "20px" }} className='mt-2 mb-2 d-flex align-items-center justify-content-center'>
 
                 <div style={{ gap: "30px" }} className='quantity-div d-flex align-items-center justify-content-between'>
-                    <span>الكمية : </span>
+                    <span>{t("cart.quantity")} : </span>
                     <span style={{ cursor: "pointer" }} onClick={() => handeladdprod(product)}><i className="plus-count fa-solid fa-plus"></i></span>
                     <span>{product.quantity}</span>
                     <span style={{ cursor: "pointer" }} onClick={() => handledecprod(product)}><i className="plus-count fa-solid fa-minus"></i></span>

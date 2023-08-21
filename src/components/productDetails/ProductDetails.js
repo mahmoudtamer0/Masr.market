@@ -14,9 +14,10 @@ function ProductDetails(props) {
     const [loading, setLoading] = useState(false);
     const [imgscounter, setImgscounter] = useState(0)
     const { productId } = useParams([]);
-    const { addtoserver, cart } = props;
+    const { addtoserver, cart, handeladdprodforfav, fav, removeprodinfav } = props;
     const api_url = 'https://btngan-data.onrender.com/products';
     const [product, setProduct] = useState();
+    const [addedfav, setAddedfav] = useState(false)
     //end states
 
     const [added, setAdded] = useState(false)
@@ -41,6 +42,8 @@ function ProductDetails(props) {
     }, [])
     //end Api's
 
+
+
     //functions
     const handleCopied = () => {
         toast.success('Link Copied', {
@@ -61,6 +64,26 @@ function ProductDetails(props) {
     }, [])
 
     //end functions
+
+    useEffect(() => {
+        const find = fav.find(item => item.id === productId)
+        find === undefined ? setAddedfav(true) : setAddedfav(false)
+    }, [fav])
+
+    const handleaddfav = () => {
+        handeladdprodforfav(product)
+        // const find = fav.find(item => item.id === productId)
+        // console.log(product)
+        // if (find !== undefined) {
+        //     // removeprodinfav(product)
+        //     // setAddedfav(false)
+
+        // } else {
+        //     // handeladdprodforfav(product)
+        //     // setAddedfav(true)
+        // }
+    }
+
 
 
     return (
@@ -104,10 +127,18 @@ function ProductDetails(props) {
                                     <Stars stars={product.rate} /> <span className="shareAndrev">({product.count}) تقييم  </span>
 
                                 </div>
-                                <div className=" d-flex align-items-center details-fav c-pointer">
-                                    <i className="fa-regular fa-heart"></i>
-                                    <span className="shareAndrev">اضافة للمفضلة</span>
-                                </div>
+                                {/* <div className=" d-flex align-items-center details-fav c-pointer">
+                                    {addedfav ?
+                                        <button onClick={() => handleaddfav(product)}>
+                                            <i style={{ color: "red" }} className="fa-solid fa-heart"></i>
+                                        </button>
+                                        :
+                                        <button onClick={() => handleaddfav(product)}>
+                                            <i className="fa-regular fa-heart"></i>
+                                        </button>
+                                    }
+
+                                </div> */}
                                 <CopyToClipboard text={window.location.href}
                                     onCopy={() => handleCopied()}   >
                                     <div className="btn-copied-link d-flex align-items-center details-box">

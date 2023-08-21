@@ -1,0 +1,73 @@
+{
+    "header": {
+        "logo": "Matgar",
+        "logo2": "sala",
+        "search_bar": "search what you want",
+        "contact_title1": "Welcome",
+        "contact_title2": "Contact us",
+        "cart_title1": "Cart",
+        "fav_title1": "Favourites",
+        "cart_title2": "L.E"
+    },
+    "landing": {
+        "title": "Best discounts 2023",
+        "description": "The basket store provides you with all the electronics or home furnishings you need in addition to the best discounts on products. Shop now and enjoy all the discounts on the products.",
+        "land_button": "Find out more"
+    },
+    "services": {
+        "title1": "Guaranteed products",
+        "title2": "Free shipping",
+        "title3": "Secure payments",
+        "desc": "Secure payments in installments up to 12 months"
+    },
+    "productsLists": {
+        "title": "Our Products",
+        "description": "Shop the latest featured products added new",
+        "price_curency": "L.E",
+        "add_btn": "Add to Cart",
+        "added_btn": "Added",
+        "product_details": "Product Details",
+        "contact_us": "Contact us",
+        "edit_products": "Edit on Products"
+    },
+    "footer": {
+        "title1": "Subscribe to the newsletter",
+        "desc1": "Join now and get 10% off your next purchase!",
+        "title2": "You can unsubscribe at any moment",
+        "desc2": "Enter your email",
+        "btn_desc2": "Subscripe",
+        "title3": "Mobile Apps",
+        "about_store": "about our store",
+        "about_desc": "Basket store is one of the best stores that sell digital products at the best prices and international brands. Shop now and see more designs and enjoy the best offers and discounts",
+        "col2_title": "My Account",
+        "col2_link1": "My Account",
+        "col2_link2": "My Orders",
+        "col2_link3": "cart",
+        "col2_link4": "Favourite",
+        "col3_title": "important Links",
+        "col3_link1": "about us",
+        "col3_link2": "Privacy",
+        "col3_link3": "privacy policy",
+        "col3_link4": "Help Center",
+        "col4_title": "Follow us on",
+        "copy_right": "Copyright © 2023 Salla platform. All rights reserved",
+        "tax_number": "Tax number: 5343322"
+    },
+    "cart": {
+        "empty_title": "Cart is empty",
+        "empty_desc": "There's no products till now",
+        "reset_title": "Order summary",
+        "reset_title2": "Total products",
+        "reset_title3": "Tax",
+        "reset_title4": "Deleviry",
+        "reset_title5": "Do you hav promo code?",
+        "reset_btn": "add",
+        "total_price": "Total",
+        "total_curency": "L.E",
+        "total_desc": "Prices are tax inclusive",
+        "checkout": "Checkout",
+        "quantity": "Quantity",
+        "links_main": "Home",
+        "links_cart": "Cart"
+    }
+}

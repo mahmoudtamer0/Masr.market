@@ -4,8 +4,15 @@
 }
 
 
-.maincart h3 {
+.maincart a {
     font-size: 20px;
+    color: #333333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.maincart a:hover {
+    color: #62D0B6;
 }
 
 .cartproduct {
@@ -283,16 +290,16 @@
 }
 
 @media (max-width:550px) {
-    .maincart h3 {
-        font-size: 14px;
-        max-width: 135px;
+    .maincart a {
+        font-size: 14px !important;
+        max-width: 135px !important;
     }
 
     .main-prod-INcart {
         padding: 0 7px;
     }
 
-    .main-prod-INcart h3 {
+    .main-prod-INcart a {
         margin: 0;
         font-size: 11px;
     }

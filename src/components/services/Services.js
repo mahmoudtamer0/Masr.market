@@ -1,7 +1,9 @@
 import phoneImg from '../../images/phone.png'
 import soundImg from '../../images/sound.png'
+import { useTranslation } from "react-i18next";
 import './Services.css'
 function Services() {
+    const { t, i18n } = useTranslation();
     return (
         <div className='services'>
             <div className="container">
@@ -9,22 +11,22 @@ function Services() {
                     <div className="d-flex align-items-center">
                         <div><i className="fa-solid fa-truck-fast"></i></div>
                         <div className="services-text">
-                            <p>منتجات مضمونه</p>
-                            <p>مدفوعات آمنة أقساط تصل إلى 12 شهرًا</p>
+                            <p>{t("services.title1")}</p>
+                            <p>{t("services.desc")}</p>
                         </div>
                     </div>
                     <div className="d-flex align-items-center">
                         <div><i className="fa-solid fa-truck-ramp-box"></i></div>
                         <div className="services-text">
-                            <p>شحن مجاني</p>
-                            <p>مدفوعات آمنة أقساط تصل إلى 12 شهرًا</p>
+                            <p>{t("services.title2")}</p>
+                            <p>{t("services.desc")}</p>
                         </div>
                     </div>
                     <div className="d-flex align-items-center">
                         <div><i className="fa-solid fa-wallet"></i></div>
                         <div className="services-text">
-                            <p>مدفوعات آمنة</p>
-                            <p>مدفوعات آمنة أقساط تصل إلى 12 شهرًا</p>
+                            <p>{t("services.title3")}</p>
+                            <p>{t("services.desc")}</p>
                         </div>
                     </div>
                 </div>

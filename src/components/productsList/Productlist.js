@@ -3,14 +3,15 @@ import { useState, useEffect, useRef } from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
 import Product from './Product';
 import { Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 function ProductList(props) {
     //states
     const localValue = JSON.parse(localStorage.getItem("products"))
     const [Products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
-    const { handeladdprod, cart } = props;
+    const { setFave, handeladdprod, cart, handeladdprodforfav, fav, removeprodinfav } = props;
     const [loading, setLoading] = useState(false);
-    const [filterd, setFilterd] = useState([])
+    const { t, i18n } = useTranslation();
 
     // Api's
     const api_url = 'https://btngan-data.onrender.com/products';
@@ -63,11 +64,11 @@ function ProductList(props) {
             <div className="container">
                 <div className='main-action-div d-flex justify-content-between'>
                     <div>
-                        <h2>منتجاتنا</h2>
-                        <p className='title-p'>تسوق احدث المنتجات المميزة المضافة جديد</p>
+                        <h2>{t("productsLists.title")}</h2>
+                        <p className='title-p'>{t("productsLists.description")}</p>
                     </div>
                     <div style={{ gap: "10px" }} className='d-flex align-items-center'>
-                        <div className="btn-group dropend">
+                        <div className="btn-group">
                             <button id='bttt'
                                 type="button"
                                 className="down-btn btn btn-secondary dropdown-toggle"
@@ -93,7 +94,7 @@ function ProductList(props) {
                                 </li>
                             </ul>
                         </div>
-                        <div className="btn-group dropend">
+                        <div className="btn-group">
                             <button id='bttt' type="button" className="down-btn btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categories
                             </button>
@@ -112,7 +113,14 @@ function ProductList(props) {
                 <div className="row justify-content-center align-items-center products-box">
                     {Products.length > 0 ? Products.map((product) => {
                         return (
-                            <Product key={product.id} cart={cart} handeladdprod={handeladdprod} product={product} />
+                            <Product
+                                key={product.id}
+                                cart={cart} handeladdprod={handeladdprod}
+                                product={product}
+                                handeladdprodforfav={handeladdprodforfav}
+                                fav={fav}
+                                removeprodinfav={removeprodinfav}
+                            />
                         )
                     }
                     )
@@ -127,8 +135,8 @@ function ProductList(props) {
                             /><div className='mt-3'>.... <i className="fa-regular fa-face-smile-beam" style={{ color: "#FFC62A" }}></i> Please wait a second waiting for server response </div></div>}
                 </div>
                 <div className='end-buttons w-50 d-flex justify-content-center'>
-                    <Link>تواصل معنا</Link>
-                    <Link>تعديل علي المنتجات</Link>
+                    <Link>{t("productsLists.contact_us")}</Link>
+                    <Link>{t("productsLists.edit_products")}</Link>
                 </div>
             </div>
         </div>

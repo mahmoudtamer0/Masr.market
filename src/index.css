@@ -4,6 +4,10 @@ body {
   direction: rtl;
 }
 
+body.ltr {
+  direction: ltr;
+}
+
 ul {
   list-style: none;
   margin: 0;
