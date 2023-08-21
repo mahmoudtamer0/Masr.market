@@ -14,17 +14,17 @@ function ProductList(props) {
     const { t, i18n } = useTranslation();
 
     // Api's
-    const api_url = 'https://btngan-data.onrender.com/products';
+    const api_url = 'https://btngan-data.onrender.com';
     const getProducts = () => {
-        fetch(api_url).then((res) => res.json()).then((data) => setProducts(data))
+        fetch(`${api_url}/products`).then((res) => res.json()).then((data) => setProducts(data))
     }
     const getcategories = () => {
-        fetch("https://btngan-data.onrender.com/catigories")
+        fetch(`${api_url}/catigories`)
             .then((res) => res.json())
             .then((data) => { setCategories(data) })
     }
     const getincategories = (catname) => {
-        fetch(`https://btngan-data.onrender.com/${catname}`)
+        fetch(`${api_url}/${catname}`)
             .then((res) => res.json())
             .then((data) => { setProducts(data) })
     }
@@ -74,7 +74,7 @@ function ProductList(props) {
                                 className="down-btn btn btn-secondary dropdown-toggle"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                Sort by
+                                {t("sorting.sort_by")}
                             </button>
                             <ul className="dropdown-menu">
                                 <li><button onClick={() => getProducts()} className='dropdown-item' >Default</button></li>
@@ -82,29 +82,56 @@ function ProductList(props) {
                                     <button id='high'
                                         onClick={(e) => handlesort(e.target.id)}
                                         className='dropdown-item'>
-                                        Price: High to Low
+                                        {t("sorting.high")}
                                     </button>
                                 </li>
                                 <li>
                                     <button
                                         onClick={(e) => handlesort(e.target.id)}
                                         className='dropdown-item'>
-                                        Price: low to High
+                                        {t("sorting.low")}
                                     </button>
                                 </li>
                             </ul>
                         </div>
                         <div className="btn-group">
                             <button id='bttt' type="button" className="down-btn btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Categories
+                                {t("sorting.categories")}
                             </button>
                             <ul className="dropdown-menu">
                                 <li><button className='dropdown-item' onClick={() => getProducts()}>All</button></li>
-                                {categories.map(cat => {
-                                    return (
-                                        <li key={cat}><button className='dropdown-item' onClick={() => getincategories(cat)}>{cat}</button></li>
-                                    )
-                                })}
+                                <li>
+                                    <button
+                                        className='dropdown-item'
+                                        onClick={() => getincategories("men's_clothing")}
+                                    >
+                                        {t("sorting.mens")}
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        className='dropdown-item'
+                                        onClick={() => getincategories("women's_clothing")}
+                                    >
+                                        {t("sorting.woman's")}
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        className='dropdown-item'
+                                        onClick={() => getincategories("jewelery")}
+                                    >
+                                        {t("sorting.jewelry")}
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        className='dropdown-item'
+                                        onClick={() => getincategories("electronics")}
+                                    >
+                                        {t("sorting.electronics")}
+                                    </button>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -135,8 +162,7 @@ function ProductList(props) {
                             /><div className='mt-3'>.... <i className="fa-regular fa-face-smile-beam" style={{ color: "#FFC62A" }}></i> Please wait a second waiting for server response </div></div>}
                 </div>
                 <div className='end-buttons w-50 d-flex justify-content-center'>
-                    <Link>{t("productsLists.contact_us")}</Link>
-                    <Link>{t("productsLists.edit_products")}</Link>
+                    <Link to="/contact-us">{t("productsLists.contact_us")}</Link>
                 </div>
             </div>
         </div>

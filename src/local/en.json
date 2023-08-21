@@ -96,5 +96,17 @@
         "curency": "L.E",
         "home": "Home",
         "now": "Favourites"
+    },
+    "sorting": {
+        "categories": "Categories",
+        "sort_by": "Sort by",
+        "all": "All",
+        "mens": "Men's Clothing",
+        "woman's": "Woman's Clothing",
+        "jewelry": "jewelry",
+        "electronics": "Electronics",
+        "default": "Default",
+        "high": "Price: High to Low",
+        "low": "Price: Low to High"
     }
 }
