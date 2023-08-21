@@ -80,5 +80,21 @@
         "price_curency": "L.E",
         "add_to_cart": "Add to Cart",
         "Buy": "Buy"
+    },
+    "contact": {
+        "contact_us": "Contact us",
+        "contact_p1": "For complaints and suggestions",
+        "contact_p2": "This message will be sent to us on this email mahmoud.tamer.developer@gmail.com",
+        "label_1": "Name: ",
+        "label_2": "Email: ",
+        "label_3": "Your Message",
+        "label_4": "Leave a comment here",
+        "submit": "Send",
+        "error_message": "Please enter this field"
+    },
+    "favourites": {
+        "curency": "L.E",
+        "home": "Home",
+        "now": "Favourites"
     }
 }

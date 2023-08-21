@@ -77,8 +77,9 @@ function Navbar(props) {
                                 }
                                 <i class="fa-solid fa-heart"></i>
                             </div>
-                            <div className="brand-text">
+                            <div className="brand-text m-1">
                                 <p>{t("header.fav_title1")}</p>
+                                <p className="d-none">{t("header.fav_title1")}</p>
                             </div>
                         </div>
                     </NavLink>

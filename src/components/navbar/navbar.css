@@ -177,13 +177,13 @@ p {
         padding: 0;
     }
 
-    .btn-group-vertical>.btn,
+    /* .btn-group-vertical>.btn,
     .btn-group>.btn {
         position: relative;
         flex: 1 1 auto;
         width: 45px;
         padding: 3px 0;
-    }
+    } */
 
     .brand-text p:last-of-type {
         font-size: 11px;

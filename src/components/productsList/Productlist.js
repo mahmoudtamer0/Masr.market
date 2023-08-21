@@ -77,7 +77,7 @@ function ProductList(props) {
                                 Sort by
                             </button>
                             <ul className="dropdown-menu">
-                                <li><button className='dropdown-item' >Default</button></li>
+                                <li><button onClick={() => getProducts()} className='dropdown-item' >Default</button></li>
                                 <li>
                                     <button id='high'
                                         onClick={(e) => handlesort(e.target.id)}

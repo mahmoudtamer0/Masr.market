@@ -80,5 +80,21 @@
         "price_curency": "ج.م",
         "add_to_cart": "اضف الي السلة",
         "Buy": "شراء سريع"
+    },
+    "contact": {
+        "contact_us": "تواصل معنا",
+        "contact_p1": "للشكاوي و المقترحات",
+        "contact_p2": "هذه الرسالة سوف ترسل لنا علي هذا الايميل mahmoud.tamer.developer@gmail.com",
+        "label_1": "اسمك : ",
+        "label_2": "البريد الاليكتروني: ",
+        "label_3": "رسالتك :",
+        "label_4": "اترك رسالتك هنا",
+        "submit": "ارسال",
+        "error_message": "من فضلك ادخل هذا الحقل"
+    },
+    "favourites": {
+        "curency": "ج.م",
+        "home": "الرئيسية",
+        "now": "المفضلة"
     }
 }

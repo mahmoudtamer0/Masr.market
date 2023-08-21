@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-const ProducInfav = ({ product, removeprodinfav }) => {
+const ProducInfav = ({ product, removeprodinfav, t }) => {
 
     return (
         <div key={product.id} className='main-prod-INcart'>
@@ -15,7 +15,7 @@ const ProducInfav = ({ product, removeprodinfav }) => {
                     </div>
                 </div>
                 <div className="cart-prod-price">
-                    {(product.price)} ج.م
+                    {(product.price)} {t('favourites.curency')}
                 </div>
                 <div className="basketdiv">
                     <i

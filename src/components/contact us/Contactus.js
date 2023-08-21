@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react'
 import './contactus.css'
 import emailjs from '@emailjs/browser';
-import { faL } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 const Contactus = () => {
-
+    const [t, i18next] = useTranslation()
     const [email, setemail] = useState('')
     const [name, setName] = useState('')
     const [message, setMessage] = useState('')
@@ -47,12 +47,12 @@ const Contactus = () => {
         <div className='maincart'>
             <div className='container'>
                 <form onSubmit={sendEmail} ref={form} className='contact-form'>
-                    <h2 className='contact-title text-center'> تواصل معنا</h2>
-                    <p style={{ fontSize: "14px" }} className='mb-1 text-center text-body-tertiary'>للشكاوي و المقترحات</p>
-                    <p style={{ fontSize: "14px" }} className='mb-2 text-center text-body-tertiary'>هذه الرسالة سوف ترسل لنا علي هذا الايميل mahmoud.tamer.developer@gmail.com</p>
+                    <h2 className='contact-title text-center'> {t("contact.contact_us")}</h2>
+                    <p style={{ fontSize: "14px" }} className='mb-1 text-center text-body-tertiary'>{t("contact.contact_p1")}</p>
+                    <p style={{ fontSize: "14px" }} className='mb-2 text-center text-body-tertiary'>{t("contact.contact_p2")}</p>
                     <div>
                         <div className=" mb-2">
-                            <label className='mb-3 label-conatact' htmlFor="">اسمك :</label>
+                            <label className='mb-3 label-conatact' htmlFor="">{t("contact.label_1")}</label>
                             <input
                                 value={name}
                                 name="user_name"
@@ -62,9 +62,9 @@ const Contactus = () => {
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </div>
-                        {accept && name == "" && <p className='contact-error-message mb-2'>من فضلك ادخل هذا الحقل</p>}
+                        {accept && name == "" && <p className='contact-error-message mb-2'>{t("contact.error_message")}</p>}
                         <div className="mb-2 ">
-                            <label className=' mb-3 label-conatact' >البريد الاليكتروني :</label>
+                            <label className=' mb-3 label-conatact' >{t("contact.label_2")}</label>
                             <input
                                 value={email}
                                 name="user_email"
@@ -74,21 +74,21 @@ const Contactus = () => {
                                 onChange={(e) => setemail(e.target.value)}
                             />
                         </div>
-                        {accept && email == "" && <p className='contact-error-message mb-2'>من فضلك ادخل هذا الحقل</p>}
+                        {accept && email == "" && <p className='contact-error-message mb-2'>{t("contact.error_message")}</p>}
                         <div className='form-flating'>
-                            <label className='mb-3 label-conatact'>رسالتك :</label>
+                            <label className='mb-3 label-conatact'>{t("contact.label_3")}</label>
                             <textarea
                                 value={message}
                                 name="message"
                                 className="w-100 form-control"
-                                placeholder="Leave a comment here"
+                                placeholder={t("contact.label_4")}
                                 onChange={(e) => setMessage(e.target.value)}
                             ></textarea>
                         </div>
                     </div>
-                    {accept && message == "" && <p className='contact-error-message mb-2'>من فضلك ادخل هذا الحقل</p>}
+                    {accept && message == "" && <p className='contact-error-message mt-2'>{t("contact.error_message")}</p>}
                     <div className='mt-4'>
-                        <button disabled={loading} type='submit'>ارسال</button>
+                        <button disabled={loading} type='submit'>{t("contact.submit")}</button>
                     </div>
                     {
                         success != '' && <div className="mt-2 alert alert-success" role="alert">

@@ -3,9 +3,11 @@ import '../cart/cart.css'
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom"
 import ProductInfav from "./ProductInfav";
+import { useTranslation } from "react-i18next";
 function Favourites({ fav, loadingForFav, removeprodinfav }) {
 
     const [loading, setLoading] = useState(false);
+    const [t, i18next] = useTranslation();
     //functions
     useEffect(() => {
         setLoading(true)
@@ -15,9 +17,9 @@ function Favourites({ fav, loadingForFav, removeprodinfav }) {
         <div className="maincart">
             <div className="container">
                 <div className="cart-links">
-                    <NavLink className='cart-link' to='/'>الرئيسية</NavLink >
+                    <NavLink className='cart-link' to='/'>{t('favourites.home')}</NavLink >
                     <span>/</span>
-                    <NavLink className='cart-link' to='/favourites'>المفضلة</NavLink >
+                    <NavLink className='cart-link' to='/favourites'>{t('favourites.now')}</NavLink >
                 </div>
                 <div className="row prod-reset">
                     <div className="d-flex justify-content-center align-items-center
@@ -41,7 +43,8 @@ function Favourites({ fav, loadingForFav, removeprodinfav }) {
                                     <ProductInfav
                                         key={product.id}
                                         removeprodinfav={removeprodinfav}
-                                        product={product} />
+                                        product={product}
+                                        t={t} />
                                 )
                             })}
                         </div>
