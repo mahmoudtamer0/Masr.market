@@ -7,14 +7,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './proddet.css'
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 function ProductDetails(props) {
 
     //stats
     // const [copied, setCopied] = useState(false)
+    const [t, i18next] = useTranslation()
     const [loading, setLoading] = useState(false);
     const [imgscounter, setImgscounter] = useState(0)
     const { productId } = useParams([]);
-    const { addtoserver, cart, handeladdprodforfav, fav, removeprodinfav } = props;
+    const { addtoserver, cart } = props;
     const api_url = 'https://btngan-data.onrender.com/products';
     const [product, setProduct] = useState();
     const [addedfav, setAddedfav] = useState(false)
@@ -65,25 +67,6 @@ function ProductDetails(props) {
 
     //end functions
 
-    useEffect(() => {
-        const find = fav.find(item => item.id === productId)
-        find === undefined ? setAddedfav(true) : setAddedfav(false)
-    }, [fav])
-
-    const handleaddfav = () => {
-        handeladdprodforfav(product)
-        // const find = fav.find(item => item.id === productId)
-        // console.log(product)
-        // if (find !== undefined) {
-        //     // removeprodinfav(product)
-        //     // setAddedfav(false)
-
-        // } else {
-        //     // handeladdprodforfav(product)
-        //     // setAddedfav(true)
-        // }
-    }
-
 
 
     return (
@@ -115,35 +98,23 @@ function ProductDetails(props) {
                             <div className="d-flex align-items-center count-details mt-3">
                                 <div className="d-flex align-items-center">
                                     <i className="fa-solid fa-boxes-packing i-color "></i>
-                                    <span>المتبقي <span className={product.remaining < 10 ? 'r-color' : 'i-color'}>{product.remaining}</span> وحدة</span>
+                                    <span>{t("product.remained")} <span className={product.remaining < 10 ? 'r-color' : 'i-color'}>{product.remaining}</span> {t("product.pieces")}</span>
                                 </div>
                                 <div className="d-flex align-items-center details-box">
                                     <i className="fa-solid fa-fire r-color"></i>
-                                    <span>تم شرائه <span className="i-color">{product.buyed}</span> مرة</span>
+                                    <span>{t("product.buyed")} <span className="i-color">{product.buyed}</span> {t("product.time")}</span>
                                 </div>
                             </div>
                             <div className="d-flex align-items-center count-details mt-4 details-box">
                                 <div className="d-flex align-items-center">
-                                    <Stars stars={product.rate} /> <span className="shareAndrev">({product.count}) تقييم  </span>
+                                    <Stars stars={product.rate} /> <span className="shareAndrev">({product.count}) {t("product.reviews")} </span>
 
                                 </div>
-                                {/* <div className=" d-flex align-items-center details-fav c-pointer">
-                                    {addedfav ?
-                                        <button onClick={() => handleaddfav(product)}>
-                                            <i style={{ color: "red" }} className="fa-solid fa-heart"></i>
-                                        </button>
-                                        :
-                                        <button onClick={() => handleaddfav(product)}>
-                                            <i className="fa-regular fa-heart"></i>
-                                        </button>
-                                    }
-
-                                </div> */}
                                 <CopyToClipboard text={window.location.href}
                                     onCopy={() => handleCopied()}   >
                                     <div className="btn-copied-link d-flex align-items-center details-box">
                                         <i className="fa-solid fa-share-nodes"></i>
-                                        <span className="shareAndrev">شارك المنتج</span>
+                                        <span className="shareAndrev">{t("product.share")}</span>
                                     </div>
                                 </CopyToClipboard>
                             </div>
@@ -151,23 +122,23 @@ function ProductDetails(props) {
                                 <h5>{product.description}</h5>
                             </div>
                             <div className="mt-5 prod-price-det">
-                                <h3>{product.price} ج.م</h3>
+                                <h3>{product.price} {t("product.price_curency")}</h3>
                             </div>
                             <div className='d-flex det-actions-div mt-4'>
                                 {!added
                                     ?
                                     <button onClick={() => handlecadd(product)} className='det-prod-add d-flex justify-content-center align-items-center'>
                                         <span><i className="fa-solid fa-cart-plus"></i></span>
-                                        <span>اضف للسلة</span>
+                                        <span>{t("product.add_to_cart")}</span>
                                     </button>
                                     :
                                     <Link to="/cart" disabled={true} className='det-prod-add alredyadded d-flex justify-content-center align-items-center'>
-                                        <span>تمت اضافاته</span>
+                                        <span>{t("productsLists.added_btn")}</span>
                                         <span><i style={{ color: "#fff" }} className="fa-solid fa-check"></i></span>
                                     </Link>}
                                 <button className='det-prod-add d-flex justify-content-center align-items-center'>
                                     <span><i className="fa-solid fa-cart-plus"></i></span>
-                                    <span>شراء سريع</span>
+                                    <span>{t("product.Buy")}</span>
                                 </button>
                             </div>
                         </div>

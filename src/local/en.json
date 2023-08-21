@@ -69,5 +69,16 @@
         "quantity": "Quantity",
         "links_main": "Home",
         "links_cart": "Cart"
+    },
+    "product": {
+        "remained": "remaining",
+        "pieces": "pieces",
+        "buyed": "buyed",
+        "time": "time",
+        "reviews": "reviews",
+        "share": "share",
+        "price_curency": "L.E",
+        "add_to_cart": "Add to Cart",
+        "Buy": "Buy"
     }
 }

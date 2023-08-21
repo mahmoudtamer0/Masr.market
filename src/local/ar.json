@@ -69,5 +69,16 @@
         "quantity": "الكمية",
         "links_main": "الرئيسية",
         "links_cart": "سلة المشتريات"
+    },
+    "product": {
+        "remained": "المتبقي",
+        "pieces": "وحدة",
+        "buyed": "شرائه",
+        "time": "مرة",
+        "reviews": "تقييم",
+        "share": "شارك المنتج",
+        "price_curency": "ج.م",
+        "add_to_cart": "اضف الي السلة",
+        "Buy": "شراء سريع"
     }
 }
