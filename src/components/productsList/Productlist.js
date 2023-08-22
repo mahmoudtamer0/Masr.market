@@ -12,6 +12,7 @@ function ProductList(props) {
     const { setFave, handeladdprod, cart, handeladdprodforfav, fav, removeprodinfav } = props;
     const [loading, setLoading] = useState(false);
     const { t, i18n } = useTranslation();
+    const [search, setSearch] = useState("")
 
     // Api's
     const api_url = 'https://btngan-data.onrender.com';
@@ -43,6 +44,15 @@ function ProductList(props) {
         }
     }
 
+    const handlesearch = (value) => {
+        let filterd = Products.filter(prod => prod.title.includes(value) ? prod : ""
+        )
+        console.log(filterd)
+        // if (filterd) {
+        //     setProducts(filterd)
+        // }
+    }
+
     // const handleformat = () => {
     //     let filterd = Products.filter(prod => prod.price >= 700)
     //     if (filterd) {
@@ -59,14 +69,19 @@ function ProductList(props) {
         localStorage.setItem("products", JSON.stringify(Products))
     }, [Products])
     //end functions
+
+    const [focused, setFocused] = useState(false)
+
+    const inpref = useRef()
     return (
         <div className='product-list'>
             <div className="container">
-                <div className='main-action-div d-flex justify-content-between'>
+                <div className='main-action-div d-flex align-items-center justify-content-between'>
                     <div>
                         <h2>{t("productsLists.title")}</h2>
                         <p className='title-p'>{t("productsLists.description")}</p>
                     </div>
+
                     <div style={{ gap: "10px" }} className='d-flex align-items-center'>
                         <div className="btn-group">
                             <button id='bttt'
@@ -135,6 +150,33 @@ function ProductList(props) {
                             </ul>
                         </div>
                     </div>
+                </div>
+                <div className='search-main-div'>
+                    <div className="nav-input-div mobil-search">
+                        <div className='search-input-div'>
+                            <input
+                                onBlur={() => {
+                                    setTimeout(() => {
+                                        setFocused(false)
+                                    }, 300);
+                                }}
+                                onFocus={() => setFocused(true)}
+                                onChange={(e) => setSearch(e.target.value)}
+                                type="search" placeholder={t("searching.place")} />
+                        </div>
+                        <div className={focused ? "search-result-box" : "d-none search-result-box"}>
+                            {Products.filter((item) => {
+                                return search.toLowerCase() === "" ? null : item.title.toLowerCase().includes(search)
+                            }).map((product) => {
+                                return (
+                                    <Link key={product.id} to={`/products/${product.id}`}>
+                                        <p> {product.title}</p>
+                                    </Link>
+                                )
+                            })}
+                        </div>
+                    </div>
+
                 </div>
 
                 <div className="row justify-content-center align-items-center products-box">

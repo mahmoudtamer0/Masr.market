@@ -108,5 +108,8 @@
         "default": "Default",
         "high": "Price: High to Low",
         "low": "Price: Low to High"
+    },
+    "searching": {
+        "place": "Search in products"
     }
 }

@@ -99,9 +99,9 @@ p {
     gap: 5px;
 }
 
-.mobil-search {
+/* .mobil-search {
     display: none;
-}
+} */
 
 @media (max-width:990px) {
 

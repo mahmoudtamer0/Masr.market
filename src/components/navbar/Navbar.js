@@ -75,7 +75,7 @@ function Navbar(props) {
                                     :
                                     <span className="favlemgth-en">{fav.length}</span>
                                 }
-                                <i class="fa-solid fa-heart"></i>
+                                <i className="fa-solid fa-heart"></i>
                             </div>
                             <div className="brand-text m-1">
                                 <p>{t("header.fav_title1")}</p>
@@ -114,14 +114,6 @@ function Navbar(props) {
 
 
             </div>
-            {/* <div className="nav-input-div mobil-search">
-                <input type="text" placeholder="ابحث عما تريد" />
-                {i18n.language === "en" ?
-                    <i className="sech-icon fa-solid fa-magnifying-glass"></i>
-                    :
-                    <i className="def-icon fa-solid fa-magnifying-glass"></i>
-                }
-            </div> */}
         </nav >
     )
 }

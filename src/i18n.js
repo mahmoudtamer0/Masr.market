@@ -5,7 +5,6 @@ import translationEN from "./local/en.json"
 import languageDetector from "i18next-browser-languagedetector"
 
 const langvalue = JSON.parse(localStorage.getItem("lang")) || "ar"
-console.log(langvalue.language)
 
 const resources = {
     en: {
@@ -18,7 +17,7 @@ const resources = {
 
 i18n
     .use(languageDetector)
-    .use(initReactI18next) // passes i18n down to react-i18next
+    .use(initReactI18next)
     .init({
         resources,
         lng: langvalue.language,
