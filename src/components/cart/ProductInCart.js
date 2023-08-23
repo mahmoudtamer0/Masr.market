@@ -1,8 +1,19 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { addprod, deletprod, handledecproducts } from '../../rtk/reducers/cart-slice'
 
-const ProductInCart = ({ product, removeprod, handeladdprod, handledecprod, t }) => {
-    const [quant, setQuant] = useState(1)
+const ProductInCart = ({ product, t, i18n, setloadingForCart }) => {
+
+    const dispatch = useDispatch()
+
+    const handleremove = (product) => {
+        setloadingForCart(true)
+        setTimeout(() => {
+            setloadingForCart(false)
+            dispatch(deletprod(product))
+        }, 200);
+    }
 
     return (
         <div key={product.id} className='main-prod-INcart'>
@@ -20,7 +31,7 @@ const ProductInCart = ({ product, removeprod, handeladdprod, handledecprod, t })
                 </div>
                 <div className="basketdiv">
                     <i
-                        onClick={() => { removeprod(product) }}
+                        onClick={() => { handleremove(product.id) }}
                         className="fa-solid fa-xmark">
                     </i>
                 </div>
@@ -28,10 +39,20 @@ const ProductInCart = ({ product, removeprod, handeladdprod, handledecprod, t })
             <div style={{ gap: "20px" }} className='mt-2 mb-2 d-flex align-items-center justify-content-center'>
 
                 <div style={{ gap: "30px" }} className='quantity-div d-flex align-items-center justify-content-between'>
-                    <span>{t("cart.quantity")} : </span>
-                    <span style={{ cursor: "pointer" }} onClick={() => handeladdprod(product)}><i className="plus-count fa-solid fa-plus"></i></span>
-                    <span>{product.quantity}</span>
-                    <span style={{ cursor: "pointer" }} onClick={() => handledecprod(product)}><i className="plus-count fa-solid fa-minus"></i></span>
+                    {i18n.language == "en" ?
+                        <>
+                            <span>{t("cart.quantity")} : </span>
+                            <span style={{ cursor: "pointer" }} onClick={() => dispatch(handledecproducts(product))}><i className="plus-count fa-solid fa-minus"></i></span>
+                            <span>{product.quantity}</span>
+                            <span style={{ cursor: "pointer" }} onClick={() => dispatch(addprod(product))}><i className="plus-count fa-solid fa-plus"></i></span>
+                        </>
+                        : <>
+                            <span>{t("cart.quantity")} : </span>
+                            <span style={{ cursor: "pointer" }} onClick={() => dispatch(addprod(product))}><i className="plus-count fa-solid fa-plus"></i></span>
+                            <span>{product.quantity}</span>
+                            <span style={{ cursor: "pointer" }} onClick={() => dispatch(handledecproducts(product))}><i className="plus-count fa-solid fa-minus"></i></span>
+                        </>
+                    }
                 </div>
             </div>
         </div>

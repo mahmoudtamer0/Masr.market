@@ -1,7 +1,19 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { deletProductFav } from "../../rtk/reducers/fav-slice";
 
 
-const ProducInfav = ({ product, removeprodinfav, t }) => {
+const ProducInfav = ({ product, setLoadingForFave, t }) => {
+
+    const dispatch = useDispatch()
+
+    const handleDeleteProduct = (product) => {
+        setLoadingForFave(true)
+        setTimeout(() => {
+            dispatch(deletProductFav(product))
+            setLoadingForFave(false)
+        }, 200);
+    }
 
     return (
         <div key={product.id} className='main-prod-INcart'>
@@ -19,7 +31,7 @@ const ProducInfav = ({ product, removeprodinfav, t }) => {
                 </div>
                 <div className="basketdiv">
                     <i
-                        onClick={() => { removeprodinfav(product) }}
+                        onClick={() => { handleDeleteProduct(product) }}
                         className="fa-solid fa-xmark">
                     </i>
                 </div>

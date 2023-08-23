@@ -4,21 +4,26 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom"
 import ProductInCart from "./ProductInCart";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 function Cart(props) {
     //states
-    const { products, removeprod, tax, totalprods,
-        total, deleviery, loadingForCart, handeladdprod, handledecprod } = props;
+    const { tax, totalprods, total, deleviery } = props;
     const [loading, setLoading] = useState(false);
     const [t, i18next] = useTranslation()
+    const products = useSelector((state) => state.cart)
+    const [loadingForCart, setLoadingForCart] = useState(false);
     //end states
 
     let totalquantity = 0;
     products.map(prod => totalquantity += prod.quantity)
 
-    //functions
     useEffect(() => {
         setLoading(true)
     }, [])
+    //functions
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(products))
+    }, [products])
     //end functions
     return (
         <div className="maincart">
@@ -45,15 +50,14 @@ function Cart(props) {
                                 </div>
                             </div>}
                         <div className={loadingForCart ? 'd-none' : 'd-block w-100'}>
-                            {products && products.map(product => {
+                            {products && products.map((product) => {
                                 return (
                                     <ProductInCart
                                         t={t}
                                         key={product.id}
-                                        removeprod={removeprod}
-                                        handledecprod={handledecprod}
-                                        handeladdprod={handeladdprod}
-                                        product={product} />
+                                        setloadingForCart={setLoadingForCart}
+                                        product={product}
+                                        i18n={i18next} />
                                 )
                             })}
                         </div>

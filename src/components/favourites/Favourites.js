@@ -4,14 +4,20 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom"
 import ProductInfav from "./ProductInfav";
 import { useTranslation } from "react-i18next";
-function Favourites({ fav, loadingForFav, removeprodinfav }) {
+import { useSelector } from "react-redux";
+function Favourites() {
 
     const [loading, setLoading] = useState(false);
     const [t, i18next] = useTranslation();
+    const [loadingForFav, setLoadingForFave] = useState(false)
+    const fav = useSelector(state => state.fav)
     //functions
     useEffect(() => {
         setLoading(true)
     }, [])
+    useEffect(() => {
+        localStorage.setItem("fav", JSON.stringify(fav))
+    }, [fav])
     //end functions
     return (
         <div className="maincart">
@@ -42,8 +48,8 @@ function Favourites({ fav, loadingForFav, removeprodinfav }) {
                                 return (
                                     <ProductInfav
                                         key={product.id}
-                                        removeprodinfav={removeprodinfav}
                                         product={product}
+                                        setLoadingForFave={setLoadingForFave}
                                         t={t} />
                                 )
                             })}
@@ -52,9 +58,10 @@ function Favourites({ fav, loadingForFav, removeprodinfav }) {
                 </div>
                 {fav.length < 1 &&
                     <div className="noprod">
-                        <div><i className="fa-solid fa-bag-shopping"></i></div>
-                        <h4 className="text-center">السلة فارغة</h4>
-                        <h5 className="text-center">لا توجد منتجات حتي الان</h5>
+                        <div><i className="fa-solid fa-heart">
+                        </i></div>
+                        <h4 className="text-center">{t("favourites.empty_title")}</h4>
+                        <h5 className="text-center">{t("favourites.empty_desc")}</h5>
                     </div>
                 }
             </div >

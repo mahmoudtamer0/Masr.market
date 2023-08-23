@@ -95,7 +95,9 @@
     "favourites": {
         "curency": "L.E",
         "home": "Home",
-        "now": "Favourites"
+        "now": "Favourites",
+        "empty_title": "Favourites is empty",
+        "empty_desc": "There's no products till now"
     },
     "sorting": {
         "categories": "Categories",

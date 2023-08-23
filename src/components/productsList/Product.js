@@ -4,14 +4,23 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useTranslation } from "react-i18next";
 import { useEffect } from 'react'
-const Product = ({ setFave, fav, product, handeladdprod, cart, handeladdprodforfav, removeprodinfav }) => {
-
-    const { t, i18n } = useTranslation();
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { addprod } from '../../rtk/reducers/cart-slice';
+import { addProductTofav, deletProductFav } from '../../rtk/reducers/fav-slice';
+const Product = ({ product }) => {
+    const dispatch = useDispatch()
     const [added, setAdded] = useState(false)
     const [addedfav, setAddedfav] = useState(false)
+    const { t, i18n } = useTranslation();
+    const cart = useSelector(state => state.cart)
+    const fav = useSelector(state => state.fav)
+
+
+    // handle cart page (add product and check)
 
     const handleclick = (product) => {
-        handeladdprod(product)
+        dispatch(addprod(product))
         const find = cart.find(item => item.id === product.id)
         console.log(find)
         if (find) {
@@ -20,22 +29,28 @@ const Product = ({ setFave, fav, product, handeladdprod, cart, handeladdprodforf
     }
 
     useEffect(() => {
-        const find = fav.find(item => item.id === product.id)
-        find ? setAddedfav(true) : setAddedfav(false)
+        const findedInCart = cart.find(item => item.id === product.id)
+        findedInCart ? setAdded(true) : setAdded(false)
+
     }, [])
 
-    const handleaddfav = (product) => {
+    // handle favourite page (add or delete)
+
+    const handleAddProductToFav = (product) => {
         const find = fav.find(item => item.id === product.id)
         if (find !== undefined) {
-            removeprodinfav(product)
+            dispatch(deletProductFav(product))
             setAddedfav(false)
         } else {
-            // setAddedfav(false)
-            handeladdprodforfav(product)
+            dispatch(addProductTofav(product))
             setAddedfav(true)
         }
     }
 
+    useEffect(() => {
+        const findedInFav = fav.find(item => item.id === product.id)
+        findedInFav ? setAddedfav(true) : setAddedfav(false)
+    }, [])
 
 
     return (
@@ -63,7 +78,7 @@ const Product = ({ setFave, fav, product, handeladdprod, cart, handeladdprodforf
                         {
                             addedfav ?
                                 <button
-                                    onClick={() => handleaddfav(product)}
+                                    onClick={() => handleAddProductToFav(product)}
                                     style={{ width: "20%", color: "red" }}
                                     className='prod-fav prodfavaction'
                                 >
@@ -72,7 +87,7 @@ const Product = ({ setFave, fav, product, handeladdprod, cart, handeladdprodforf
                                 </button>
                                 :
                                 <button
-                                    onClick={() => handleaddfav(product)}
+                                    onClick={() => handleAddProductToFav(product)}
                                     className='prod-fav prodfavaction'>
                                     <i className="fa-regular fa-heart"></i>
                                 </button>

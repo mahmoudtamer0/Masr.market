@@ -3,38 +3,33 @@ import { useState, useEffect, useRef } from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
 import Product from './Product';
 import { Link } from 'react-router-dom';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 function ProductList(props) {
-    //states
-    const localValue = JSON.parse(localStorage.getItem("products"))
+    //consts
     const [Products, setProducts] = useState([]);
-    const [categories, setCategories] = useState([]);
-    const { setFave, handeladdprod, cart, handeladdprodforfav, fav, removeprodinfav } = props;
+    const { handeladdprod, cart, handeladdprodforfav, fav, removeprodinfav } = props;
     const [loading, setLoading] = useState(false);
     const { t, i18n } = useTranslation();
     const [search, setSearch] = useState("")
+    const [focused, setFocused] = useState(false)
 
     // Api's
     const api_url = 'https://btngan-data.onrender.com';
     const getProducts = () => {
         fetch(`${api_url}/products`).then((res) => res.json()).then((data) => setProducts(data))
     }
-    const getcategories = () => {
-        fetch(`${api_url}/catigories`)
-            .then((res) => res.json())
-            .then((data) => { setCategories(data) })
-    }
+
     const getincategories = (catname) => {
         fetch(`${api_url}/${catname}`)
             .then((res) => res.json())
             .then((data) => { setProducts(data) })
     }
+
+    //functions
     useEffect(() => {
         getProducts()
-        getcategories();
+        setLoading(true)
     }, [])
-
-
 
     const handlesort = (id) => {
         let filterd = Products.filter(prod => prod.price >= 0)
@@ -44,35 +39,10 @@ function ProductList(props) {
         }
     }
 
-    const handlesearch = (value) => {
-        let filterd = Products.filter(prod => prod.title.includes(value) ? prod : ""
-        )
-        console.log(filterd)
-        // if (filterd) {
-        //     setProducts(filterd)
-        // }
-    }
 
-    // const handleformat = () => {
-    //     let filterd = Products.filter(prod => prod.price >= 700)
-    //     if (filterd) {
-    //         setProducts(filterd)
-    //     }
-    // }
 
-    //functions
-    useEffect(() => {
-        setLoading(true)
-    }, [])
 
-    useEffect(() => {
-        localStorage.setItem("products", JSON.stringify(Products))
-    }, [Products])
-    //end functions
 
-    const [focused, setFocused] = useState(false)
-
-    const inpref = useRef()
     return (
         <div className='product-list'>
             <div className="container">

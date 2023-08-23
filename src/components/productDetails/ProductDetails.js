@@ -8,35 +8,39 @@ import 'react-toastify/dist/ReactToastify.css';
 import './proddet.css'
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { addprod } from "../../rtk/reducers/cart-slice";
 function ProductDetails(props) {
 
     //stats
-    // const [copied, setCopied] = useState(false)
     const [t, i18next] = useTranslation()
     const [loading, setLoading] = useState(false);
     const [imgscounter, setImgscounter] = useState(0)
     const { productId } = useParams([]);
-    const { addtoserver, cart } = props;
+    const dispatch = useDispatch()
+    const cart = useSelector(state => state.cart)
     const api_url = 'https://btngan-data.onrender.com/products';
     const [product, setProduct] = useState();
-    const [addedfav, setAddedfav] = useState(false)
+    const [added, setAdded] = useState(false)
     //end states
 
-    const [added, setAdded] = useState(false)
 
+    // handle add product to cart and check
     useEffect(() => {
         const Find = cart.find(item => item.id == product?.id)
         Find ? setAdded(true) : setAdded(false)
-    }, [cart])
+    }, [])
 
-    const handlecadd = (product) => {
-        addtoserver(product)
+    const handleAddProduct = (product) => {
+        dispatch(addprod(product))
         const Find = cart.find(item => item.id === product.id)
         if (Find) {
             setAdded(true);
         } else setAdded(true);
     }
-
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }, [cart])
     //Api's
     useEffect(() => {
         fetch(`${api_url}/${productId}`)
@@ -66,8 +70,6 @@ function ProductDetails(props) {
     }, [])
 
     //end functions
-
-
 
     return (
         <div className="mainprod">
@@ -127,7 +129,7 @@ function ProductDetails(props) {
                             <div className='d-flex det-actions-div mt-4'>
                                 {!added
                                     ?
-                                    <button onClick={() => handlecadd(product)} className='det-prod-add d-flex justify-content-center align-items-center'>
+                                    <button onClick={() => handleAddProduct(product)} className='det-prod-add d-flex justify-content-center align-items-center'>
                                         <span><i className="fa-solid fa-cart-plus"></i></span>
                                         <span>{t("product.add_to_cart")}</span>
                                     </button>

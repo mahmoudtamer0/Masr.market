@@ -2,10 +2,14 @@ import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import './navbar.css'
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 function Navbar(props) {
 
     const { t, i18n } = useTranslation();
-    const { cartLength, total, fav } = props;
+    const { total } = props;
+
+    const cart = useSelector(state => state.cart)
+    const fav = useSelector(state => state.fav)
 
     const handlechange = (value) => {
         if (value === "ar") {
@@ -55,9 +59,9 @@ function Navbar(props) {
                         <div className="p-r d-flex nav-cont cart-num-red">
                             <div className="d-flex position-r">
                                 {i18n.language === "ar" ?
-                                    <span>{cartLength}</span>
+                                    <span>{cart.length}</span>
                                     :
-                                    <span className="cartlength-en">{cartLength}</span>
+                                    <span className="cartlength-en">{cart.length}</span>
                                 }
                                 <i className="fa-solid fa-cart-shopping"></i>
                             </div>

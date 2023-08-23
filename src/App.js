@@ -9,27 +9,15 @@ import HashLoader from "react-spinners/HashLoader"
 import './components/preloader.css'
 import Cart from "./components/cart/Cart";
 import Services from "./components/services/Services";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from "./components/ScrollToTop";
 import Contactus from "./components/contact us/Contactus";
 import Favourites from "./components/favourites/Favourites";
-// import global_en from './translation/en/global.json';
-// import global_ar from './translation/ar/global.json';
-// import i18next from "i18next";
-// import { I18nextProvider } from 'react-i18next';
-
-const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart")) || [];
-const favFromLocalStorage = JSON.parse(localStorage.getItem("fav")) || [];
+import { useSelector } from "react-redux";
 function App() {
   //states
   const [loading, setLoading] = useState(false);
-  const [loadingForCart, setLoadingForCart] = useState(false);
-  const [loadingForFav, setLoadingForFav] = useState(false);
-  const [cart, setCart] = useState(cartFromLocalStorage)
-  const [fav, setFave] = useState(favFromLocalStorage)
-  const [countPercart, setCountPerCart] = useState(0);
-  const [cartErr, setCartErr] = useState(0)
+  const fav = useSelector(state => state.fav)
+  const cart = useSelector(state => state.cart)
 
   //functions
   useEffect(() => {
@@ -41,58 +29,6 @@ function App() {
   }, [])
 
 
-  const handeladdprod = (product) => {
-    const productexist = cart.find((prod) => prod.id === product.id);
-    if (productexist) {
-      setCart(cart.map((prod) => prod.id === product.id ?
-        { ...productexist, quantity: productexist.quantity + 1 } : prod))
-    }
-    else {
-      setCart([...cart, { ...product, quantity: 1 }])
-    }
-  }
-
-  const removeprod = (product) => {
-    setLoadingForCart(true)
-    setTimeout(() => {
-      setLoadingForCart(false)
-      setCart(cart.filter(prod => prod.id !== product.id))
-    }, 200);
-
-  }
-
-  const handledecprod = (product) => {
-
-    const productexist = cart.find((prod) => prod.id === product.id)
-    if (productexist?.quantity === 1) {
-      return 0;
-    } else {
-      setCart(
-        cart.map((prod) =>
-          prod.id === product.id
-            ? { ...productexist, quantity: productexist.quantity - 1 }
-            : prod))
-    }
-  }
-
-  const handeladdprodforfav = (product) => {
-    const productexist = fav.find((prod) => prod.id === product.id);
-    if (productexist) {
-      setFave(fav.filter(prod => prod.id !== product.id))
-    }
-    else {
-      setFave([...fav, { ...product, quantity: 1 }])
-    }
-  }
-
-  const removeprodinfav = (product) => {
-    setLoadingForFav(true)
-    setTimeout(() => {
-      setLoadingForFav(false)
-      setFave(fav.filter(prod => prod.id !== product.id))
-    }, 200);
-  }
-
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart))
   }, [cart])
@@ -100,6 +36,8 @@ function App() {
   useEffect(() => {
     localStorage.setItem("fav", JSON.stringify(fav))
   }, [fav])
+
+  // the reset of cart
 
   let totalprods = cart?.reduce((price, prod) => price + prod.quantity * prod.price, 0)
   let tax = Math.floor(totalprods * 0.14);
@@ -111,6 +49,7 @@ function App() {
   return (
     <div className="App">
       {loading ?
+        // preloader
         <div className="preloader">
           <HashLoader
             color='#62D0B6'
@@ -118,69 +57,34 @@ function App() {
             size={100}
             aria-label="Loading Spinner"
             data-testid="loader"
-          /></div> : <div >
-
+          /></div> :
+        //the app
+        <div>
           <Router basename="/Masr.market">
             <ScrollToTop />
-            <Navbar fav={fav} cartLength={cart.length} total={total} />
+            <Navbar fav={fav} total={total} />
             <Routes>
               <Route path="/" element={
                 <>
                   <Landing />
                   <Services />
-                  <ProductList
-                    cart={cart}
-                    cartErr={cartErr}
-                    handeladdprod={handeladdprod}
-                    handeladdprodforfav={handeladdprodforfav}
-                    fav={fav}
-                    removeprodinfav={removeprodinfav}
-                  />
-                  <ToastContainer
-                    position="top-right"
-                    autoClose={2000}
-                    limit={2}
-                    hideProgressBar={false}
-                    newestOnTop
-                    closeOnClick
-                    rtl
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="dark"
-                  />
+                  <ProductList />
                 </>
               } />
               <Route path="/cart" element={<>
                 <Cart
-                  removeprod={removeprod}
-                  handledecprod={handledecprod}
-                  handeladdprod={handeladdprod}
-                  products={cart}
                   total={total}
                   deleviery={deleviery}
                   totalprods={totalprods}
                   tax={tax}
-                  loadingForCart={loadingForCart}
                 /></>} />
               <Route path="/products/:productId"
-                element={
-                  <ProductDetails
-                    removeprodinfav={removeprodinfav}
-                    fav={fav}
-                    cart={cart}
-                    addtoserver={handeladdprod}
-                    handeladdprodforfav={handeladdprodforfav}
-                  />} />
+                element={<ProductDetails />} />
               <Route path="/contact-us"
                 element={<Contactus />} />
               <Route path="/favourites"
                 element={
-                  <Favourites
-                    removeprodinfav={removeprodinfav}
-                    fav={fav}
-                    loadingForFav={loadingForFav}
-                  />} />
+                  <Favourites />} />
             </Routes>
             <Footer />
           </Router>

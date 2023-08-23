@@ -95,7 +95,9 @@
     "favourites": {
         "curency": "ج.م",
         "home": "الرئيسية",
-        "now": "المفضلة"
+        "now": "المفضلة",
+        "empty_title": "المفضلة فارغة",
+        "empty_desc": "لا توجد منتجات حتي الان"
     },
     "sorting": {
         "categories": "فئات",
