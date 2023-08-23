@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import './navbar.css'
 import { useEffect } from "react";
@@ -32,7 +32,7 @@ function Navbar(props) {
         <nav className="navbar">
             <div className="container justify-content-between">
                 <div className="the-brand">
-                    <NavLink className="navbar-brand d-flex" to="/">
+                    <Link className="navbar-brand d-flex" to="/">
                         <div>
                             <i className="fa-brands fa-opencart"></i>
                         </div>
@@ -40,7 +40,7 @@ function Navbar(props) {
                             <p>{t("header.logo")}</p>
                             <p>{t("header.logo2")}</p>
                         </div>
-                    </NavLink>
+                    </Link>
                 </div>
 
                 <div className="d-flex navlanks align-items-center">
@@ -75,7 +75,7 @@ function Navbar(props) {
                         <div className="p-r d-flex nav-cont cart-num-red">
                             <div style={{ position: "relative" }} className="d-flex">
                                 {i18n.language === "ar" && fav.length > 0 ?
-                                    <span>{fav.length}</span>
+                                    <span className="favlemgth-en">{fav.length}</span>
                                     :
                                     <span className="favlemgth-en">{fav.length}</span>
                                 }

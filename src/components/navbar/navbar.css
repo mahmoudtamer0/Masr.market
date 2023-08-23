@@ -229,3 +229,9 @@ p {
         display: none;
     }
 }
+
+
+a.active i {
+    background-color: #62D0B6;
+    color: white;
+}
