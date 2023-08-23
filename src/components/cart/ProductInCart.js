@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addprod, deletprod, handledecproducts } from '../../rtk/reducers/cart-slice'
@@ -10,8 +9,8 @@ const ProductInCart = ({ product, t, i18n, setloadingForCart }) => {
     const handleremove = (product) => {
         setloadingForCart(true)
         setTimeout(() => {
-            setloadingForCart(false)
             dispatch(deletprod(product))
+            setloadingForCart(false)
         }, 200);
     }
 
