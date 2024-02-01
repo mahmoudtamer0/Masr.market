@@ -326,3 +326,34 @@ i.plus-count {
 
     color: #666 !important;
 }
+
+.clearButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px;
+}
+
+.clearButton button {
+    width: 65%;
+    background-color: #62D0B6;
+    color: white;
+    border: 1px solid #62D0B6;
+    height: 50px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.clearButton button:hover {
+    background-color: white;
+    color: #62D0B6;
+}
+
+.loaderDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
