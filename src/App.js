@@ -13,13 +13,24 @@ import ScrollToTop from "./components/ScrollToTop";
 import Contactus from "./components/contact us/Contactus";
 import Favourites from "./components/favourites/Favourites";
 import { useSelector } from "react-redux";
+import axios from "axios";
 function App() {
   //states
   const [loading, setLoading] = useState(false);
   const fav = useSelector(state => state.fav)
   const cart = useSelector(state => state.cart)
+  const [Products, setProducts] = useState([]);
 
   //functions
+
+  const api_url = 'data.json';
+  const getProducts = () => {
+    axios.get(`${api_url}`).then(res => setProducts(res.data.products))
+  }
+  useEffect(() => {
+    getProducts()
+  }, [])
+
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
@@ -68,7 +79,7 @@ function App() {
                 <>
                   <Landing />
                   <Services />
-                  <ProductList />
+                  <ProductList getProducts={getProducts} Products={Products} />
                 </>
               } />
               <Route path="/cart" element={<>
