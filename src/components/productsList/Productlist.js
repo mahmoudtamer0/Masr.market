@@ -4,42 +4,39 @@ import ClipLoader from "react-spinners/ClipLoader";
 import Product from './Product';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 function ProductList(props) {
     //consts
-    const [Products, setProducts] = useState([]);
-    const { handeladdprod, cart, handeladdprodforfav, fav, removeprodinfav } = props;
+    const { getProducts, Products } = props;
+    const [view, setView] = useState(Products);
     const [loading, setLoading] = useState(false);
     const { t, i18n } = useTranslation();
     const [search, setSearch] = useState("")
     const [focused, setFocused] = useState(false)
 
-    // Api's
-    const api_url = 'https://btngan-data.onrender.com';
-    const getProducts = () => {
-        fetch(`${api_url}/products`).then((res) => res.json()).then((data) => setProducts(data))
-    }
 
-    const getincategories = (catname) => {
-        fetch(`${api_url}/${catname}`)
-            .then((res) => res.json())
-            .then((data) => { setProducts(data) })
-    }
+
 
     //functions
-    useEffect(() => {
-        getProducts()
-        setLoading(true)
-    }, [])
+    const getincategories = (catname) => {
+        let filter = Products?.filter(product => product.category == catname)
+        console.log(filter)
+        setView(filter)
+    }
 
     const handlesort = (id) => {
         let filterd = Products.filter(prod => prod.price >= 0)
         filterd.sort((a, b) => { return id === "high" ? b.price - a.price : a.price - b.price })
         if (filterd) {
-            setProducts(filterd)
+            setView(filterd)
         }
     }
 
 
+    useEffect(() => {
+
+        setLoading(true)
+    }, [])
 
 
 
@@ -84,11 +81,11 @@ function ProductList(props) {
                                 {t("sorting.categories")}
                             </button>
                             <ul className="dropdown-menu">
-                                <li><button className='dropdown-item' onClick={() => getProducts()}>All</button></li>
+                                <li><button className='dropdown-item' onClick={() => setView(Products)}>All</button></li>
                                 <li>
                                     <button
                                         className='dropdown-item'
-                                        onClick={() => getincategories("men's_clothing")}
+                                        onClick={() => getincategories("لبس رجالي")}
                                     >
                                         {t("sorting.mens")}
                                     </button>
@@ -96,7 +93,7 @@ function ProductList(props) {
                                 <li>
                                     <button
                                         className='dropdown-item'
-                                        onClick={() => getincategories("women's_clothing")}
+                                        onClick={() => getincategories("لبس حريمي")}
                                     >
                                         {t("sorting.woman's")}
                                     </button>
@@ -104,7 +101,7 @@ function ProductList(props) {
                                 <li>
                                     <button
                                         className='dropdown-item'
-                                        onClick={() => getincategories("jewelery")}
+                                        onClick={() => getincategories("مجوهرات")}
                                     >
                                         {t("sorting.jewelry")}
                                     </button>
@@ -112,7 +109,7 @@ function ProductList(props) {
                                 <li>
                                     <button
                                         className='dropdown-item'
-                                        onClick={() => getincategories("electronics")}
+                                        onClick={() => getincategories("إلكترونيات")}
                                     >
                                         {t("sorting.electronics")}
                                     </button>
@@ -150,15 +147,13 @@ function ProductList(props) {
                 </div>
 
                 <div className="row justify-content-center align-items-center products-box">
-                    {Products.length > 0 ? Products.map((product) => {
+                    {view.length > 0 ? view.map((product) => {
                         return (
                             <Product
                                 key={product.id}
-                                cart={cart} handeladdprod={handeladdprod}
+
                                 product={product}
-                                handeladdprodforfav={handeladdprodforfav}
-                                fav={fav}
-                                removeprodinfav={removeprodinfav}
+
                             />
                         )
                     }
