@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Stars from "./Stars";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import ClipLoader from "react-spinners/ClipLoader";
+import HashLoader from "react-spinners/HashLoader";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './proddet.css'
@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { addprod } from "../../rtk/reducers/cart-slice";
+import axios from "axios";
 function ProductDetails(props) {
 
     //stats
@@ -19,13 +20,13 @@ function ProductDetails(props) {
     const { productId } = useParams([]);
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
-    const api_url = 'https://btngan-data.onrender.com/products';
+    const api_url = 'dawa';
     const [product, setProduct] = useState();
     const [added, setAdded] = useState(false)
-    //end states
+    // //end states
 
 
-    // handle add product to cart and check
+    // // handle add product to cart and check
     useEffect(() => {
         const Find = cart.find(item => item.id == product?.id)
         Find ? setAdded(true) : setAdded(false)
@@ -43,9 +44,10 @@ function ProductDetails(props) {
     }, [cart])
     //Api's
     useEffect(() => {
-        fetch(`${api_url}/${productId}`)
-            .then(res => res.json()).then(data => setProduct(data))
+        axios.get("/data.json").then(res => setProduct(res.data.products[productId - 1]))
     }, [])
+
+
     //end Api's
 
 
@@ -67,6 +69,10 @@ function ProductDetails(props) {
 
     useEffect(() => {
         setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000);
+
     }, [])
 
     //end functions
@@ -75,7 +81,7 @@ function ProductDetails(props) {
         <div className="mainprod">
             <div className="container">
 
-                {product ?
+                {loading == false && product ?
                     <div className="mainsection row justify-content-between">
                         <div className="images-div col-lg-6 d-flex">
                             <div className="det-imgs-col">
@@ -148,13 +154,15 @@ function ProductDetails(props) {
                     </div>
 
 
-                    : <div className="text-center"><ClipLoader
-                        color='#62D0B6'
-                        loading={loading}
-                        size={80}
-                        aria-label="Loading Spinner"
-                        data-testid="loader"
-                    /><div className='mt-3'>.... Please wait a moment</div></div>}
+                    : <div className="text-center">
+                        <HashLoader
+                            className="m-auto"
+                            color='#62D0B6'
+                            loading={loading}
+                            size={80}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        /><div className='mt-3'>.... Please wait a moment</div></div>}
 
 
             </div>
