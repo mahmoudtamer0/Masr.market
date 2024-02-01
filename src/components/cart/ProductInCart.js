@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { addprod, deletprod, handledecproducts } from '../../rtk/reducers/cart-slice'
+import { addprod, deletprod, handledecproducts, } from '../../rtk/reducers/cart-slice'
 
 const ProductInCart = ({ product, t, i18n, setloadingForCart }) => {
 
@@ -11,7 +11,7 @@ const ProductInCart = ({ product, t, i18n, setloadingForCart }) => {
         setTimeout(() => {
             dispatch(deletprod(product))
             setloadingForCart(false)
-        }, 200);
+        }, 500);
     }
 
     return (
