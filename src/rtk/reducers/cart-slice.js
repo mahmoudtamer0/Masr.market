@@ -20,11 +20,13 @@ const cartSlice = createSlice({
             if (productexist.quantity > 1) {
                 productexist.quantity -= 1;
             }
+        }, deletall: (state, action) => {
+            return state = []
         }
     }
 })
 
 
-export const { addprod, deletprod, handledecproducts } = cartSlice.actions
+export const { addprod, deletprod, handledecproducts, deletall } = cartSlice.actions
 
 export default cartSlice.reducer;
