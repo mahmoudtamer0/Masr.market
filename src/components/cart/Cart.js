@@ -1,10 +1,12 @@
-import ClipLoader from "react-spinners/ClipLoader";
+import HashLoader from "react-spinners/HashLoader";
 import './cart.css'
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom"
 import ProductInCart from "./ProductInCart";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { deletall } from '../../rtk/reducers/cart-slice'
+import { useDispatch } from "react-redux";
 function Cart(props) {
     //states
     const { tax, totalprods, total, deleviery } = props;
@@ -12,6 +14,7 @@ function Cart(props) {
     const [t, i18next] = useTranslation()
     const products = useSelector((state) => state.cart)
     const [loadingForCart, setLoadingForCart] = useState(false);
+    const dispatch = useDispatch()
     //end states
 
     let totalquantity = 0;
@@ -24,6 +27,16 @@ function Cart(props) {
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(products))
     }, [products])
+
+
+
+    const clearCart = () => {
+        setLoadingForCart(true)
+        setTimeout(() => {
+            dispatch(deletall())
+            setLoadingForCart(false)
+        }, 500);
+    }
     //end functions
     return (
         <div className="maincart">
@@ -37,8 +50,8 @@ function Cart(props) {
                     <div className="d-flex justify-content-center align-items-center
                                         prods col-lg-7 col-md-7 col-sm-12 col-12">
                         {loadingForCart &&
-                            <div className="text-center">
-                                <ClipLoader
+                            <div className="text-center loaderDiv">
+                                <HashLoader
                                     color='#62D0B6'
                                     loading={loading}
                                     size={80}
@@ -60,7 +73,12 @@ function Cart(props) {
                                         i18n={i18next} />
                                 )
                             })}
+                            {products.length > 0 &&
+                                <div className="clearButton">
+                                    <button onClick={() => clearCart()}>Clear All</button>
+                                </div>}
                         </div>
+
                     </div>
                     {
                         products.length >= 1 &&
