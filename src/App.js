@@ -23,10 +23,10 @@ function App() {
 
   //functions
 
-  const api_url = 'data.json';
+  const api_url = 'https://btngan-data.onrender.com/products';
 
   const getProducts = () => {
-    axios.get(`${api_url}`).then(res => setProducts(res.data.products))
+    fetch(api_url).then(res => res.json()).then(data => setProducts(data))
   }
 
   useEffect(() => {
