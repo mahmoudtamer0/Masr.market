@@ -23,7 +23,7 @@ function App() {
 
   //functions
 
-  const api_url = '/data.json';
+  const api_url = 'data.json';
 
   const getProducts = () => {
     axios.get(`${api_url}`).then(res => setProducts(res.data.products))
