@@ -25,16 +25,23 @@ function ProductList(props) {
     }
 
     const handlesort = (id) => {
-        let filterd = Products.filter(prod => prod.price >= 0)
+        let filterd = view?.filter(prod => prod.price >= 0)
         filterd.sort((a, b) => { return id === "high" ? b.price - a.price : a.price - b.price })
         if (filterd) {
             setView(filterd)
         }
     }
 
+    const handldefault = () => {
+        let filterd = view?.filter(prod => prod.id >= 0)
+        filterd.sort((a, b) => { return a.id - b.id })
+        if (filterd) {
+            setView(filterd)
+        }
+    }
 
     useEffect(() => {
-
+        getProducts()
         setLoading(true)
     }, [])
 
@@ -59,7 +66,7 @@ function ProductList(props) {
                                 {t("sorting.sort_by")}
                             </button>
                             <ul className="dropdown-menu">
-                                <li><button onClick={() => getProducts()} className='dropdown-item' >Default</button></li>
+                                <li><button onClick={() => handldefault()} className='dropdown-item' >Default</button></li>
                                 <li>
                                     <button id='high'
                                         onClick={(e) => handlesort(e.target.id)}

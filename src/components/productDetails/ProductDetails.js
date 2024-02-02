@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { addprod } from "../../rtk/reducers/cart-slice";
 import axios from "axios";
-function ProductDetails(props) {
+function ProductDetails({ Products }) {
 
     //stats
     const [t, i18next] = useTranslation()
@@ -44,7 +44,8 @@ function ProductDetails(props) {
     }, [cart])
     //Api's
     useEffect(() => {
-        axios.get("/data.json").then(res => setProduct(res.data.products[productId - 1]))
+        fetch(`https://btngan-data.onrender.com/products/${productId}`).then(res => res.json())
+            .then(res => setProduct(res))
     }, [])
 
 
@@ -81,7 +82,7 @@ function ProductDetails(props) {
         <div className="mainprod">
             <div className="container">
 
-                {loading == false && product ?
+                {product ?
                     <div className="mainsection row justify-content-between">
                         <div className="images-div col-lg-6 d-flex">
                             <div className="det-imgs-col">
