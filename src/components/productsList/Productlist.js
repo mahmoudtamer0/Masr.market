@@ -14,15 +14,16 @@ function ProductList(props) {
     const [search, setSearch] = useState("")
     const [focused, setFocused] = useState(false)
 
-
-
-
     //functions
     const getincategories = (catname) => {
         let filter = Products?.filter(product => product.category == catname)
         console.log(filter)
         setView(filter)
     }
+
+    useEffect(() => {
+        setView(Products)
+    }, [Products])
 
     const handlesort = (id) => {
         let filterd = view?.filter(prod => prod.price >= 0)
