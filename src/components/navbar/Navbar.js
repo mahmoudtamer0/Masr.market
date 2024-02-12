@@ -1,13 +1,14 @@
 import { NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import './navbar.css'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 function Navbar(props) {
 
     const { t, i18n } = useTranslation();
     const { total } = props;
-
+    const [prevScrollPos, setPrevScrollPos] = useState(0);
+    const [visible, setVisible] = useState(true);
     const cart = useSelector(state => state.cart)
     const fav = useSelector(state => state.fav)
 
@@ -28,8 +29,23 @@ function Navbar(props) {
     useEffect(() => {
         document.body.className = JSON.parse(localStorage.getItem("body"))
     }, [])
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollPos = window.scrollY;
+
+            setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+            setPrevScrollPos(currentScrollPos);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [prevScrollPos]);
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${visible ? 'visible' : 'hidden'}`}>
             <div className="container justify-content-between">
                 <div className="the-brand">
                     <Link className="navbar-brand d-flex" to="/">
