@@ -60,17 +60,6 @@ function Navbar(props) {
                 </div>
 
                 <div className="d-flex navlanks align-items-center">
-                    <NavLink to={`/contact-us`} className=" navbar-brand align-items-center">
-                        <div className="d-flex nav-cont">
-                            <div>
-                                <i className="fa-solid fa-message"></i>
-                            </div>
-                            <div className="brand-text text-prof">
-                                <p>{t("header.contact_title1")}</p>
-                                <p>{t("header.contact_title2")}</p>
-                            </div>
-                        </div>
-                    </NavLink>
                     <NavLink className=" navbar-brand" to="/cart">
                         <div className="p-r d-flex nav-cont cart-num-red">
                             <div className="d-flex position-r">
@@ -100,6 +89,17 @@ function Navbar(props) {
                             <div className="brand-text m-1">
                                 <p>{t("header.fav_title1")}</p>
                                 <p className="d-none">{t("header.fav_title1")}</p>
+                            </div>
+                        </div>
+                    </NavLink>
+                    <NavLink to={`/contact-us`} className=" navbar-brand align-items-center">
+                        <div className="d-flex nav-cont">
+                            <div>
+                                <i className="fa-solid fa-message"></i>
+                            </div>
+                            <div className="brand-text text-prof">
+                                <p>{t("header.contact_title1")}</p>
+                                <p>{t("header.contact_title2")}</p>
                             </div>
                         </div>
                     </NavLink>
