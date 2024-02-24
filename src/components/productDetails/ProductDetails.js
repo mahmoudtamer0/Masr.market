@@ -10,8 +10,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { addprod } from "../../rtk/reducers/cart-slice";
-import axios from "axios";
-function ProductDetails({ Products }) {
+function ProductDetails() {
 
     //stats
     const [t, i18next] = useTranslation()
@@ -20,7 +19,6 @@ function ProductDetails({ Products }) {
     const { productId } = useParams([]);
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
-    const api_url = 'dawa';
     const [product, setProduct] = useState();
     const [added, setAdded] = useState(false)
     // //end states
