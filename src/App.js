@@ -13,7 +13,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import Contactus from "./components/contact us/Contactus";
 import Favourites from "./components/favourites/Favourites";
 import { useSelector } from "react-redux";
-import axios from "axios";
 function App() {
   //states
   const [loading, setLoading] = useState(false);
