@@ -4,7 +4,6 @@ import ClipLoader from "react-spinners/ClipLoader";
 import Product from './Product';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 function ProductList(props) {
     //consts
     const { getProducts, Products } = props;
@@ -17,7 +16,6 @@ function ProductList(props) {
     //functions
     const getincategories = (catname) => {
         let filter = Products?.filter(product => product.category == catname)
-        console.log(filter)
         setView(filter)
     }
 
