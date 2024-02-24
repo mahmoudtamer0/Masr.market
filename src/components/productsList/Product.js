@@ -22,7 +22,6 @@ const Product = ({ product }) => {
     const handleclick = (product) => {
         dispatch(addprod(product))
         const find = cart.find(item => item.id === product.id)
-        console.log(find)
         if (find) {
             setAdded(true);
         } else setAdded(true);
