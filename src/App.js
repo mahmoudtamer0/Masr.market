@@ -13,6 +13,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Contactus from "./components/contact us/Contactus";
 import Favourites from "./components/favourites/Favourites";
 import { useSelector } from "react-redux";
+import axios from "axios";
 function App() {
   //states
   const [loading, setLoading] = useState(false);
@@ -25,8 +26,16 @@ function App() {
   const api_url = 'https://btngan-data.onrender.com/products';
 
   const getProducts = () => {
-    fetch(api_url).then(res => res.json()).then(data => setProducts(data))
+    axios.get("data.json").then(data => setProducts(data.data.products))
+
+    //   fetch(api_url).then(res => res.json()).then(data => setProducts(data))
   }
+
+  useEffect(() => {
+    axios.get("data.json").then(data => console.log(data.data.products))
+    //fetch("../data.json").then(res => console.log(res)).then(data => console.log(data))
+
+  }, [])
 
   useEffect(() => {
     getProducts()
