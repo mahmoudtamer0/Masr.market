@@ -27,15 +27,7 @@ function App() {
 
   const getProducts = () => {
     axios.get("data.json").then(data => setProducts(data.data.products))
-
-    //   fetch(api_url).then(res => res.json()).then(data => setProducts(data))
   }
-
-  useEffect(() => {
-    axios.get("data.json").then(data => console.log(data.data.products))
-    //fetch("../data.json").then(res => console.log(res)).then(data => console.log(data))
-
-  }, [])
 
   useEffect(() => {
     getProducts()
