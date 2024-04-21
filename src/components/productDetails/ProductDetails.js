@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { addprod } from "../../rtk/reducers/cart-slice";
+import axios from "axios";
 function ProductDetails() {
 
     //stats
@@ -41,11 +42,20 @@ function ProductDetails() {
         localStorage.setItem("cart", JSON.stringify(cart))
     }, [cart])
     //Api's
-    useEffect(() => {
-        fetch(`https://btngan-data.onrender.com/products/${productId}`).then(res => res.json())
-            .then(res => setProduct(res))
-    }, [])
 
+    const getProducte = () => {
+        try {
+            setLoading(true)
+            setTimeout(() => {
+                axios.get("../data.json").then(data => setProduct(data.data.products[productId - 1]))
+            }, 1500)
+        } catch { }
+        setLoading(false)
+    }
+
+    useEffect(() => {
+        getProducte()
+    }, [])
 
     //end Api's
 
@@ -66,14 +76,6 @@ function ProductDetails() {
         });
     }
 
-    useEffect(() => {
-        setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-        }, 1000);
-
-    }, [])
-
     //end functions
 
     return (
@@ -84,7 +86,7 @@ function ProductDetails() {
                     <div className="mainsection row justify-content-between">
                         <div className="images-div col-lg-6 d-flex">
                             <div className="det-imgs-col">
-                                {product.images && product.images.map((img, index) => {
+                                {product?.images && product?.images.map((img, index) => {
                                     return (
                                         <img
                                             className={imgscounter === index ? "active-col-img" : undefined}
@@ -157,7 +159,7 @@ function ProductDetails() {
                         <HashLoader
                             className="m-auto"
                             color='#62D0B6'
-                            loading={loading}
+                            loading={true}
                             size={80}
                             aria-label="Loading Spinner"
                             data-testid="loader"
