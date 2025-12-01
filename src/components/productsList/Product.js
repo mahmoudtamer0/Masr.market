@@ -54,7 +54,7 @@ const Product = ({ product }) => {
 
     return (
         <div className="col-lg-3 col-12 col-md-4 col-sm-6" key={product.id}>
-            <div style={{ minHeight: "500px" }} className="card card-product">
+            <div style={{ minHeight: "" }} className="card card-product">
                 <img src={product.image} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <p className='mt-2 mb-2 prod-category'>{product.category}</p>

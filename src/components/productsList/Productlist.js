@@ -4,27 +4,40 @@ import ClipLoader from "react-spinners/ClipLoader";
 import Product from './Product';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-function ProductList(props) {
+function ProductList() {
     //consts
-    const { getProducts, Products } = props;
-    const [view, setView] = useState(Products);
+
+    const [view, setView] = useState([]);
+    const [originalData, setOriginalData] = useState([]);
     const [loading, setLoading] = useState(false);
     const { t, i18n } = useTranslation();
     const [search, setSearch] = useState("")
     const [focused, setFocused] = useState(false)
 
     //functions
-    const getincategories = (catname) => {
-        let filter = Products?.filter(product => product.category == catname)
-        setView(filter)
+    const getincategories = async (catname) => {
+        try {
+
+            setLoading(true)
+
+            const data = await fetch("https://btngan-data.onrender.com/products")
+                .then(res => res.json());
+            let filter = data.filter(product => product.category == catname)
+            setView(filter)
+            setLoading(false)
+        } catch (err) {
+            console.log(err)
+        }
+
     }
 
-    useEffect(() => {
-        setView(Products)
-    }, [Products])
+    // useEffect(() => {
+    //     setView(Products)
+    // }, [Products])
 
     const handlesort = (id) => {
         let filterd = view?.filter(prod => prod.price >= 0)
+
         filterd.sort((a, b) => { return id === "high" ? b.price - a.price : a.price - b.price })
         if (filterd) {
             setView(filterd)
@@ -39,10 +52,24 @@ function ProductList(props) {
         }
     }
 
+
+    const getProductsRender = async () => {
+        try {
+            setLoading(true)
+            const data = await fetch("https://btngan-data.onrender.com/products").then(data => data.json())
+            setView(data);
+            setLoading(false)
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
     useEffect(() => {
-        getProducts()
-        setLoading(true)
+        getProductsRender()
     }, [])
+
+
 
 
 
@@ -87,7 +114,7 @@ function ProductList(props) {
                                 {t("sorting.categories")}
                             </button>
                             <ul className="dropdown-menu">
-                                <li><button className='dropdown-item' onClick={() => setView(Products)}>All</button></li>
+                                <li><button className='dropdown-item' onClick={() => getProductsRender()}>All</button></li>
                                 <li>
                                     <button
                                         className='dropdown-item'
@@ -138,7 +165,7 @@ function ProductList(props) {
                                 type="search" placeholder={t("searching.place")} />
                         </div>
                         <div className={focused ? "search-result-box" : "d-none search-result-box"}>
-                            {Products.filter((item) => {
+                            {view.filter((item) => {
                                 return search.toLowerCase() === "" ? null : item.title.toLowerCase().includes(search)
                             }).map((product) => {
                                 return (
@@ -153,7 +180,7 @@ function ProductList(props) {
                 </div>
 
                 <div className="row justify-content-center align-items-center products-box">
-                    {view.length > 0 ? view.map((product) => {
+                    {loading != true ? view.map((product) => {
                         return (
                             <Product
                                 key={product.id}

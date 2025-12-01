@@ -15,8 +15,10 @@
 }
 
 .card-product img {
+    padding: auto;
     max-width: 100%;
-    height: 200px;
+    height: 300px;
+    object-fit: fill;
 }
 
 .products-box {
@@ -25,7 +27,7 @@
 
 .card-product {
     max-height: 450px;
-    min-height: 450px;
+    min-height: 640px;
     margin-top: 50px;
     border-radius: 4px !important;
     background: #FFFFFF;
