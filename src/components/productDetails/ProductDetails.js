@@ -43,19 +43,21 @@ function ProductDetails() {
     }, [cart])
     //Api's
 
-    const getProducte = () => {
+    const getProducte = async () => {
         try {
             setLoading(true)
-            setTimeout(() => {
-                axios.get("../data.json").then(data => setProduct(data.data.products[productId - 1]))
-            }, 1500)
-        } catch { }
-        setLoading(false)
+            const data = await fetch(`https://btngan-data.onrender.com/products/${productId}`).then(data => data.json())
+            setProduct(data);
+            setLoading(false)
+        } catch (err) {
+            console.log(err)
+        }
+
     }
 
     useEffect(() => {
         getProducte()
-    }, [])
+    }, [productId])
 
     //end Api's
 
@@ -82,41 +84,46 @@ function ProductDetails() {
         <div className="mainprod">
             <div className="container">
 
-                {product ?
+                {loading == false ?
                     <div className="mainsection row justify-content-between">
                         <div className="images-div col-lg-6 d-flex">
                             <div className="det-imgs-col">
-                                {product?.images && product?.images.map((img, index) => {
-                                    return (
-                                        <img
-                                            className={imgscounter === index ? "active-col-img" : undefined}
-                                            key={index}
-                                            src={img.url}
-                                            alt="..."
-                                            onClick={() => setImgscounter(index)}
-                                            id="cols_imgs"
-                                        />
-                                    )
-                                })}
+                                {product?.images?.map((img, index) => (
+                                    <img
+                                        key={index}
+                                        className={imgscounter === index ? "active-col-img" : undefined}
+                                        src={img?.url}
+                                        alt="..."
+                                        onClick={() => setImgscounter(index)}
+                                        id="cols_imgs"
+                                    />
+                                ))}
                             </div>
-                            {product.images && <div className="main-img"><img alt="..." src={product.images[imgscounter].url} /></div>}
+                            {product?.images?.length > 0 && (
+                                <div className="main-img">
+                                    <img
+                                        alt="..."
+                                        src={product?.images?.[imgscounter]?.url}
+                                    />
+                                </div>
+                            )}
                         </div>
 
                         <div className="col-lg-6 prod-details">
-                            <div><h3 className="prod-title">{product.title}</h3></div>
+                            <div><h3 className="prod-title">{product?.title}</h3></div>
                             <div className="d-flex align-items-center count-details mt-3">
                                 <div className="d-flex align-items-center">
                                     <i className="fa-solid fa-boxes-packing i-color "></i>
-                                    <span>{t("product.remained")} <span className={product.remaining < 10 ? 'r-color' : 'i-color'}>{product.remaining}</span> {t("product.pieces")}</span>
+                                    <span>{t("product.remained")} <span className={product?.remaining < 10 ? 'r-color' : 'i-color'}>{product?.remaining}</span> {t("product.pieces")}</span>
                                 </div>
                                 <div className="d-flex align-items-center details-box">
                                     <i className="fa-solid fa-fire r-color"></i>
-                                    <span>{t("product.buyed")} <span className="i-color">{product.buyed}</span> {t("product.time")}</span>
+                                    <span>{t("product.buyed")} <span className="i-color">{product?.buyed}</span> {t("product.time")}</span>
                                 </div>
                             </div>
                             <div className="d-flex align-items-center count-details mt-4 details-box">
                                 <div className="d-flex align-items-center">
-                                    <Stars stars={product.rate} /> <span className="shareAndrev">({product.count}) {t("product.reviews")} </span>
+                                    <Stars stars={product?.rate} /> <span className="shareAndrev">({product?.count}) {t("product.reviews")} </span>
 
                                 </div>
                                 <CopyToClipboard text={window.location.href}
@@ -128,10 +135,10 @@ function ProductDetails() {
                                 </CopyToClipboard>
                             </div>
                             <div className="mt-4 prod-desc">
-                                <h5>{product.description}</h5>
+                                <h5>{product?.description}</h5>
                             </div>
                             <div className="mt-5 prod-price-det">
-                                <h3>{product.price} {t("product.price_curency")}</h3>
+                                <h3>{product?.price} {t("product.price_curency")}</h3>
                             </div>
                             <div className='d-flex det-actions-div mt-4'>
                                 {!added
